@@ -1,0 +1,28 @@
+[
+  {
+    "Game_Id": 1,
+    "Title": "The Legend of Zelda: Breath of the Wild",
+    "Abbreviation": "BotW",
+    "Genre": "Action-adventure",
+    "Release_Date": "2017-03-03",
+    "Developer": "Nintendo",
+    "Publisher": "Nintendo",
+    "Platforms": "Nintendo Switch, Wii U",
+    "Metacritic_Score": 97,
+    "Image": "zelda.jpg",
+    "Video": "zelda.mp4"
+  },
+  {
+    "Game_Id": 2,
+    "Title": "Elden Ring",
+    "Abbreviation": "ER",
+    "Genre": "Action RPG",
+    "Release_Date": "2022-02-25",
+    "Developer": "FromSoftware",
+    "Publisher": "Bandai Namco Entertainment",
+    "Platforms": "PC, PS4, PS5, Xbox One, Xbox Series X/S",
+    "Metacritic_Score": 96,
+    "Image": "eldenring.jpg",
+    "Video": "eldenring.mp4"
+  }
+]

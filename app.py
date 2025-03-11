@@ -1,34 +1,34 @@
-from flask import Flask, render_template, request, jsonify
-import json
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Load game data from JSON
-with open("games_data.json", "r") as f:
-    games = json.load(f)
+# Game Data (Titles, Publishers, Developers)
+games = [
+    {"title": "The Legend of Zelda: Breath of the Wild", "publisher": "Nintendo", "developer": "Nintendo"},
+    {"title": "Elden Ring", "publisher": "Bandai Namco Entertainment", "developer": "FromSoftware"},
+    {"title": "The Witcher 3: Wild Hunt", "publisher": "CD Projekt", "developer": "CD Projekt Red"},
+    {"title": "Grand Theft Auto V", "publisher": "Rockstar Games", "developer": "Rockstar North"},
+    {"title": "Red Dead Redemption 2", "publisher": "Rockstar Games", "developer": "Rockstar Games"},
+    {"title": "Cyberpunk 2077", "publisher": "CD Projekt", "developer": "CD Projekt Red"},
+    {"title": "Minecraft", "publisher": "Mojang", "developer": "Mojang"},
+    {"title": "Fortnite", "publisher": "Epic Games", "developer": "Epic Games"},
+    {"title": "God of War (2018)", "publisher": "Sony Interactive Entertainment", "developer": "Santa Monica Studio"},
+    {"title": "Super Mario Odyssey", "publisher": "Nintendo", "developer": "Nintendo"}
+]
+
+# Unique & sorted lists for publishers and developers
+publishers = sorted(set(game["publisher"] for game in games))
+developers = sorted(set(game["developer"] for game in games))
 
 @app.route("/")
 def index():
-    return render_template("index.html", games=games)
+    return render_template("index.html", games=games, publishers=publishers, developers=developers)
 
 @app.route("/game/<int:game_id>")
 def game_page(game_id):
-    game = next((game for game in games if game["Game_Id"] == game_id), None)
-    if game:
-        return render_template("game_page.html", game=game)
+    if 1 <= game_id <= len(games):
+        return render_template("game_page.html", game=games[game_id - 1])
     return "Game not found", 404
-
-@app.route("/search")
-def search():
-    query = request.args.get("q", "").lower()
-    platform = request.args.get("platform", "").lower()
-    
-    filtered_games = [game for game in games if query in game["Title"].lower() or query in game["Publisher"].lower()]
-    
-    if platform:
-        filtered_games = [game for game in filtered_games if platform in game["Platforms"].lower()]
-    
-    return jsonify(filtered_games)
 
 if __name__ == "__main__":
     app.run(debug=True)
