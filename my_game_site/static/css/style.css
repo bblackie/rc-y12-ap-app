@@ -1,0 +1,210 @@
+/* static/css/style.css */
+
+/* Basic reset for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body styling for background and text color */
+body {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Header styling with dark background and centered text */
+header {
+  background-color: #222;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Header title styling */
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+/* Navigation menu styling */
+nav ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+/* Navigation list items displayed inline */
+nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+/* Navigation links styling */
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* Hover effect for navigation links */
+nav ul li a:hover {
+  color: #fff;
+}
+
+/* Footer styling */
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Main content area: centered and with max width */
+main {
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Home page container styling */
+.home-container {
+  text-align: center;
+}
+
+/* Big search bar section with background image */
+.big-search-bar {
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 2rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+/* Big search bar heading styling */
+.big-search-bar h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Big button styling for the search call-to-action */
+.big-button {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+/* Games list header styling */
+.games-list h2 {
+  margin: 2rem 0 1rem;
+}
+
+/* Remove default list style for game list */
+.games-list ul {
+  list-style: none;
+}
+
+/* Individual game list item styling */
+.games-list li {
+  background-color: #fff;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: left;
+}
+
+/* Search page container styling */
+.search-page {
+  text-align: center;
+}
+
+/* Search form styling: centered, with a fixed max width */
+.search-form {
+  display: inline-block;
+  text-align: left;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Styling for each group within the search form */
+.search-form .form-group {
+  margin-bottom: 1rem;
+}
+
+/* Label styling within the search form */
+.search-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* Input styling for text, date, and range inputs */
+.search-form input[type="text"],
+.search-form input[type="date"],
+.search-form input[type="range"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Search results container styling */
+.search-results {
+  text-align: left;
+  display: inline-block;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* Static game list container in the search page */
+.game-list {
+  margin-top: 2rem;
+  text-align: left;
+  display: inline-block;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* Game detail page container styling */
+.game-detail-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Video container styling within the game detail page */
+.game-detail-container .video-container {
+  margin: 1rem 0;
+}
+
+/* Image container styling for game screenshots */
+.game-detail-container .image-container img {
+  max-width: 200px;
+  margin: 0.5rem;
+}
+
+/* Game description styling within the game detail page */
+.game-detail-container .game-description {
+  margin-top: 1rem;
+}
+
+/* Button styling with fade animation */
+.btn-fade {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.btn-fade:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}

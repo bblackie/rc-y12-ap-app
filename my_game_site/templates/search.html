@@ -1,0 +1,88 @@
+<!-- templates/search.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="search-page">
+  <!-- Search form title -->
+  <h2>Search Games</h2>
+  <!-- Search form using POST method -->
+  <form method="POST" class="search-form">
+    <!-- Input for developer filter -->
+    <div class="form-group">
+      <label for="developer">Developer</label>
+      <input type="text" name="developer" id="developer" placeholder="e.g. Nintendo">
+    </div>
+
+    <!-- Input for publisher filter -->
+    <div class="form-group">
+      <label for="publisher">Publisher</label>
+      <input type="text" name="publisher" id="publisher" placeholder="e.g. Rockstar Games">
+    </div>
+
+    <!-- Input for title filter -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" placeholder="e.g. Elden Ring">
+    </div>
+
+    <!-- Slider for minimum Metacritic score -->
+    <div class="form-group">
+      <label for="score-min">Metacritic Score Min</label>
+      <input type="range" name="score-min" id="score-min" min="0" max="100" value="0" oninput="scoreMinOutput.value = this.value">
+      <output id="scoreMinOutput">0</output>
+    </div>
+    <!-- Slider for maximum Metacritic score -->
+    <div class="form-group">
+      <label for="score-max">Metacritic Score Max</label>
+      <input type="range" name="score-max" id="score-max" min="0" max="100" value="100" oninput="scoreMaxOutput.value = this.value">
+      <output id="scoreMaxOutput">100</output>
+    </div>
+
+    <!-- Date input for release date range (From) -->
+    <div class="form-group">
+      <label for="date-min">Release Date (From)</label>
+      <input type="date" name="date-min" id="date-min">
+    </div>
+    <!-- Date input for release date range (To) -->
+    <div class="form-group">
+      <label for="date-max">Release Date (To)</label>
+      <input type="date" name="date-max" id="date-max">
+    </div>
+
+    <!-- Submit button for the search form -->
+    <button type="submit" class="btn-fade">Search</button>
+  </form>
+
+  <!-- Display search results if a search was performed -->
+  {% if searched %}
+    <div class="search-results">
+      <h3>Results:</h3>
+      {% if results and results|length > 0 %}
+        <ul>
+          {% for game in results %}
+          <li>
+            <a href="{{ url_for('game_detail', game_id=game['id']) }}">
+              {{ game['title'] }}
+            </a> - {{ game['developer'] }} ({{ game['publisher'] }}) Score: {{ game['metacritic_score'] }}
+          </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No results found.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <!-- Static list of all games with developer and publisher info -->
+  <div class="game-list">
+    <h3>All Games</h3>
+    <ul>
+      {% for game in all_games %}
+      <li>
+        <a href="{{ url_for('game_detail', game_id=game['id']) }}">{{ game['title'] }}</a> -
+        Developer: {{ game['developer'] }}, Publisher: {{ game['publisher'] }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

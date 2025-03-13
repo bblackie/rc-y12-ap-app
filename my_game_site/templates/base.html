@@ -1,0 +1,36 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- The title can be dynamically set by the child templates -->
+  <title>{{ title if title else "My Awesome Game Site" }}</title>
+  <!-- Link to the main CSS stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Link to the main JavaScript file -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  <!-- Header section with site title and navigation menu -->
+  <header>
+    <h1><a href="{{ url_for('home') }}">The Worlds Best Game Site</a></h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('search') }}">Search</a></li>
+        <li><a href="{{ url_for('random_game') }}">Random Game</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content area where child templates will insert their content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer section -->
+  <footer>
+    <p>© 2025 The Worlds Best Game Site: Made by Arth Patel (2025)</p>
+  </footer>
+</body>
+</html>
