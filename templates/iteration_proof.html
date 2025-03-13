@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Top 10 Best Game Search{% endblock %}
+
+{% block content %}
+    <h2>Top 10 Best Games</h2>
+
+    <!-- ✅ Search Bar -->
+    <input type="text" id="search-bar" placeholder="Search for a game..." onkeyup="searchGames()">
+    
+    <h3>Number of Games Per Genre</h3>
+    <ul>
+        {% set genres = games | map(attribute="genre") | unique | list %}
+        {% for genre in genres %}
+            <li>{{ genre }}: {{ games | selectattr("genre", "equalto", genre) | list | length }} games</li>
+        {% endfor %}
+    </ul>
+
+    {% for genre in genres %}
+        <h3>{{ genre }} Games</h3>
+        <ul>
+            {% for game in games %}
+                {% if game.genre == genre %}
+                    <li>
+                        <a href="{{ url_for('game_page', game_id=game.id) }}">{{ game.title }}</a> 
+                        ({{ game.release_year }}) - Metacritic: 
+                        <strong style="color: {% if game.metacritic_score >= 90 %}green{% elif game.metacritic_score >= 80 %}orange{% else %}red{% endif %};">
+                        {{ game.metacritic_score }}</strong>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <script>
+        function searchGames() {
+            let query = document.getElementById("search-bar").value.toLowerCase();
+
+            fetch(`/search?q=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    let list = document.getElementById("game-list");
+                    list.innerHTML = "";
+                    data.forEach(game => {
+                        let listItem = document.createElement("li");
+                        listItem.innerHTML = `<a href="/game/${game.id}">${game.title}</a> - ${game.release_year} | ${game.genre}`;
+                        list.appendChild(listItem);
+                    });
+                });
+        }
+    </script>
+{% endblock %}
