@@ -776,3 +776,174 @@ footer {
   justify-content: space-between;
   margin-top: 1rem;
 }
+/* Increase main container width for larger images */
+main {
+  padding: 1rem;
+  max-width: 1400px;  /* Increased from 1200px */
+  margin: 0 auto;
+}
+
+/* Style for game detail title and subtitles */
+.game-title {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.game-subtitle {
+  font-size: 1.8em;
+  margin-bottom: 0.3em;
+}
+
+/* Image container styling */
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.image-container img {
+  flex: 1;
+  max-width: 32%; /* Three images side-by-side with some margin */
+  height: auto;
+  object-fit: contain; /* Preserves aspect ratio */
+  margin-right: 1%;  /* Add a little space between images */
+}
+
+/* Remove right margin on the last image */
+.image-container img:last-child {
+  margin-right: 0;
+}
+/* Container for game detail images */
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+/* Force images to be huge and in proportion */
+.image-container img {
+  width: 1400px;   /* Fixed huge width */
+  height: auto;    /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the entire image is visible */
+}
+/* Increase text sizes for game detail pages */
+.game-detail-container {
+  font-size: 20px; /* Base font size for the game detail container */
+  line-height: 1.5;
+  padding: 1rem;
+}
+
+.game-detail-container h2 {
+  font-size: 3em;  /* Very large title */
+  margin-bottom: 20px;
+}
+
+.game-detail-container p {
+  font-size: 1.5em;  /* Increase paragraph text size */
+  margin-bottom: 10px;
+}
+
+/* If you have additional subtitles, for example: */
+.game-detail-container h3,
+.game-detail-container .game-subtitle {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+/* Global Base Font Size */
+body {
+  font-size: 18px;  /* Increase the global font size */
+}
+
+/* Header & Navigation (optional, if you want larger nav text) */
+header h1 {
+  font-size: 2.5em;
+}
+nav ul li a {
+  font-size: 1.3em;
+}
+
+/* Home Page Adjustments */
+.home-container h2,
+.big-search-bar h2 {
+  font-size: 3em;  /* Big title for the home page */
+  margin-bottom: 20px;
+}
+.home-container p {
+  font-size: 1.5em;
+}
+
+/* Search Page Adjustments */
+.search-page h2 {
+  font-size: 3em;  /* Big title on the search page */
+  margin-bottom: 20px;
+}
+.search-page .search-form,
+.search-page .search-results,
+.search-page .game-list {
+  font-size: 1.5em;  /* Increase font size for form fields, results, and static list */
+}
+.search-page .form-group label {
+  font-size: 1.3em;
+}
+
+/* Game Detail Page Adjustments */
+.game-detail-container {
+  font-size: 20px; /* Base font size for game detail pages */
+  line-height: 1.5;
+  padding: 1rem;
+}
+.game-detail-container h2 {
+  font-size: 3em;  /* Large title for game details */
+  margin-bottom: 20px;
+}
+.game-detail-container h3,
+.game-detail-container .game-subtitle {
+  font-size: 2em;  /* Larger subtitles for additional info */
+  margin-bottom: 10px;
+}
+.game-detail-container p {
+  font-size: 1.5em;  /* Larger paragraphs */
+  margin-bottom: 10px;
+}
+
+/* Footer Adjustments */
+footer {
+  font-size: 1.5em;  /* Increase footer text size */
+  padding: 1rem;
+  text-align: center;
+}
+/* Big Search Bar on Home Page */
+.big-search-bar {
+  width: 100%;
+  padding: 3rem 2rem;           /* Slightly reduced padding */
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 2rem;
+}
+
+.big-search-bar h2 {
+  font-size: 3.5em;           /* Reduced from 4em */
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.big-button {
+  font-size: 1.8em;           /* Reduced button text size */
+  padding: 1.3rem 2.5rem;      /* Slightly smaller padding */
+}
+
+/* Search Form Inputs (for the search page) */
+.search-form input[type="text"],
+.search-form input[type="date"] {
+  font-size: 1.3em;           /* Reduced text size in inputs */
+  padding: 0.7em;
+}
+
+/* Overall search form styling */
+.search-form {
+  font-size: 1.3em;           /* Reduced overall form text */
+  padding: 1.5rem;            /* Reduced form padding */
+}
+
