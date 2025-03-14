@@ -317,5 +317,462 @@ main {
   color: #777;
   margin-bottom: 0.5rem;
 }
+/* static/css/style.css */
 
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
+/* Body styling */
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Header and Navigation */
+header {
+  background-color: #222;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+  color: #fff;
+}
+
+/* Main content */
+main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer styling */
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Containers */
+.home-container, .search-page, .game-detail-container {
+  margin-bottom: 2rem;
+}
+
+/* Form styling */
+.search-form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Button styling */
+.btn-fade {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-fade:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Center the search form container */
+.search-form-container {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+/* Search results and game list styling */
+.search-results, .game-list {
+  background-color: #fff;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+/* Optional: styling for game links on the home page */
+.game-link-button {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.game-link-button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Image and video containers */
+.image-container, .video-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/* static/css/style.css */
+
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Header and Navigation */
+header {
+  background-color: #222;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+  color: #fff;
+}
+
+/* Main content */
+main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer styling */
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Containers */
+.home-container, .search-page, .game-detail-container {
+  margin-bottom: 2rem;
+}
+
+/* Form styling */
+.search-form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Button styling */
+.btn-fade {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-fade:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Center the search form container */
+.search-form-container {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+/* Search results and game list styling */
+.search-results, .game-list {
+  background-color: #fff;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+/* Styling for game links on the home and search pages */
+.game-link-button {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.game-link-button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Image and video containers */
+.image-container, .video-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/* Additional styling for two-column layout on the search page when a search is performed */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search-form-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-results-container {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 0;  /* Remove top margin if needed */
+}
+
+/* Ensure the search form container is centered when no search is performed */
+.game-list {
+  margin-top: 1rem;
+}
+/* static/css/style.css */
+
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Header and Navigation */
+header {
+  background-color: #222;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+  color: #fff;
+}
+
+/* Main content */
+main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer styling */
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Containers */
+.home-container, .search-page, .game-detail-container {
+  margin-bottom: 2rem;
+}
+
+/* Form styling */
+.search-form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Button styling */
+.btn-fade {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-fade:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Center the search form container */
+.search-form-container {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+/* Two-column layout for search page when search is performed */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search-results-container {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 0;
+}
+
+/* Search results and game list styling */
+.search-results, .game-list {
+  background-color: #fff;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+/* Styling for game links on the home and search pages */
+.game-link-button {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.game-link-button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Image and video containers */
+.image-container, .video-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

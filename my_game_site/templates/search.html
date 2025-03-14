@@ -1,33 +1,28 @@
+<!-- templates/search.html -->
 {% extends "base.html" %}
+{% block title %}Search Games - My Awesome Game Site{% endblock %}
+
 {% block content %}
 <div class="search-page">
   <h2>Search Games</h2>
-  
   {% if searched %}
-    <!-- Two-column layout when a search is performed -->
+    <!-- Two-column layout: search form on left, results on right -->
     <div class="search-container">
       <!-- Left column: Search form -->
       <div class="search-form-container">
         <form method="POST" class="search-form">
-          <!-- Developer input -->
           <div class="form-group">
             <label for="developer">Developer</label>
             <input type="text" name="developer" id="developer" placeholder="e.g. Nintendo">
           </div>
-  
-          <!-- Publisher input -->
           <div class="form-group">
             <label for="publisher">Publisher</label>
             <input type="text" name="publisher" id="publisher" placeholder="e.g. Rockstar Games">
           </div>
-  
-          <!-- Title input -->
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" name="title" id="title" placeholder="e.g. Elden Ring">
           </div>
-  
-          <!-- Metacritic Score sliders -->
           <div class="form-group">
             <label for="score-min">Metacritic Score Min</label>
             <input type="range" name="score-min" id="score-min" min="0" max="100" value="0" oninput="scoreMinOutput.value = this.value">
@@ -38,26 +33,24 @@
             <input type="range" name="score-max" id="score-max" min="0" max="100" value="100" oninput="scoreMaxOutput.value = this.value">
             <output id="scoreMaxOutput">100</output>
           </div>
-  
-          <!-- Release Date Calendar Inputs with bracketed helper titles -->
+          <!-- Release Date Calendar Inputs with bracketed titles -->
           <div class="form-group">
             <label for="release-date-min">
               Release Date [Minimum] – The minimum release date is 2000-01-01
             </label>
-            <input type="text" name="date-min" id="release-date-min" placeholder="Select minimum date.">
+            <input type="text" name="date-min" id="release-date-min" placeholder="Select minimum date">
           </div>
           <div class="form-group">
             <label for="release-date-max">
               Release Date [Maximum] – The maximum release date is 2024-12-31
             </label>
-            <input type="text" name="date-max" id="release-date-max" placeholder="Select maximum date.">
+            <input type="text" name="date-max" id="release-date-max" placeholder="Select maximum date">
           </div>
-  
           <button type="submit" class="btn-fade">Search</button>
         </form>
       </div>
-  
-      <!-- Right column: Search results -->
+      
+      <!-- Right column: Search Results -->
       <div class="search-results-container">
         <div class="search-results">
           <h3>Results:</h3>
@@ -65,9 +58,12 @@
             <ul>
               {% for game in results %}
                 <li>
-                  <a href="{{ url_for('game_detail', game_id=game['id']) }}">
+                  <a href="{{ url_for('game_detail', game_id=game['id']) }}" class="game-link-button">
                     {{ game['title'] }}
-                  </a> – {{ game['developer'] }} ({{ game['publisher'] }}) Score: {{ game['metacritic_score'] }}
+                  </a>
+                  <p>Developer: {{ game['developer'] }}</p>
+                  <p>Publisher: {{ game['publisher'] }}</p>
+                  <p>Metacritic Score: {{ game['metacritic_score'] }}</p>
                 </li>
               {% endfor %}
             </ul>
@@ -81,25 +77,18 @@
     <!-- When no search is performed, display the search form centered and the static game list below -->
     <div class="search-form-container" style="margin: 0 auto; max-width: 500px;">
       <form method="POST" class="search-form">
-        <!-- Developer input -->
         <div class="form-group">
           <label for="developer">Developer</label>
           <input type="text" name="developer" id="developer" placeholder="e.g. Nintendo">
         </div>
-  
-        <!-- Publisher input -->
         <div class="form-group">
           <label for="publisher">Publisher</label>
           <input type="text" name="publisher" id="publisher" placeholder="e.g. Rockstar Games">
         </div>
-  
-        <!-- Title input -->
         <div class="form-group">
           <label for="title">Title</label>
           <input type="text" name="title" id="title" placeholder="e.g. Elden Ring">
         </div>
-  
-        <!-- Metacritic Score sliders -->
         <div class="form-group">
           <label for="score-min">Metacritic Score Min</label>
           <input type="range" name="score-min" id="score-min" min="0" max="100" value="0" oninput="scoreMinOutput.value = this.value">
@@ -110,8 +99,7 @@
           <input type="range" name="score-max" id="score-max" min="0" max="100" value="100" oninput="scoreMaxOutput.value = this.value">
           <output id="scoreMaxOutput">100</output>
         </div>
-  
-        <!-- Release Date Calendar Inputs with bracketed helper titles -->
+        <!-- Release Date Calendar Inputs with bracketed titles -->
         <div class="form-group">
           <label for="release-date-min">
             Release Date [Minimum] – The minimum release date is 2000-01-01
@@ -124,18 +112,20 @@
           </label>
           <input type="text" name="date-max" id="release-date-max" placeholder="Select maximum date">
         </div>
-  
         <button type="submit" class="btn-fade">Search</button>
       </form>
     </div>
-  
     <div class="game-list">
       <h3>All Games</h3>
       <ul>
         {% for game in all_games %}
           <li>
-            <a href="{{ url_for('game_detail', game_id=game['id']) }}">{{ game['title'] }}</a> – 
-            Developer: {{ game['developer'] }}, Publisher: {{ game['publisher'] }}
+            <a href="{{ url_for('game_detail', game_id=game['id']) }}" class="game-link-button">
+              {{ game['title'] }}
+            </a>
+            <p>Developer: {{ game['developer'] }}</p>
+            <p>Publisher: {{ game['publisher'] }}</p>
+            <p>Metacritic Score: {{ game['metacritic_score'] }}</p>
           </li>
         {% endfor %}
       </ul>

@@ -1,7 +1,6 @@
+// static/js/main.js
 document.addEventListener("DOMContentLoaded", function () {
   console.log("JavaScript loaded!");
-
-  // Fade-in effect for selected elements
   const fadeElems = document.querySelectorAll(
     ".btn-fade, .home-container, .search-page, .game-detail-container"
   );
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 100);
   });
 
-  // Initialize flatpickr for minimum release date input
+  // Initialize flatpickr for the release date inputs
   var releaseDateMinInput = document.getElementById("release-date-min");
   if (releaseDateMinInput) {
     flatpickr(releaseDateMinInput, {
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Initialize flatpickr for maximum release date input
   var releaseDateMaxInput = document.getElementById("release-date-max");
   if (releaseDateMaxInput) {
     flatpickr(releaseDateMaxInput, {

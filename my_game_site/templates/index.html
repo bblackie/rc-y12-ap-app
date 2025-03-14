@@ -1,20 +1,19 @@
 <!-- templates/index.html -->
 {% extends "base.html" %}
+{% block title %}Home - My Awesome Game Site{% endblock %}
+
 {% block content %}
 <div class="home-container">
-  <!-- Big search bar with background image -->
   <div class="big-search-bar" style="background-image: url('{{ url_for('static', filename='images/searchbar-bg.jpg') }}');">
     <h2>Find Your Next Game!</h2>
     <a href="{{ url_for('search') }}" class="btn-fade big-button">Search Games</a>
   </div>
 
-  <!-- Games list section -->
   <div class="games-list">
     <h2>All Games</h2>
     <ul>
-      {% for game in games %}
+      {% for game in all_games %}
       <li>
-        <!-- Updated link for each game styled as a button -->
         <a href="{{ url_for('game_detail', game_id=game['id']) }}" class="game-link-button">
           {{ game['title'] }}
         </a>

@@ -1,38 +1,30 @@
 <!-- templates/game_detail.html -->
 {% extends "base.html" %}
+{% block title %}{{ game['title'] }} - My Awesome Game Site{% endblock %}
+
 {% block content %}
 <div class="game-detail-container">
-  <!-- Display game title -->
   <h2>{{ game['title'] }}</h2>
-  <!-- Display game details -->
   <p><strong>Genre:</strong> {{ game['genre'] }}</p>
   <p><strong>Release Date:</strong> {{ game['release_date'] }}</p>
   <p><strong>Developer:</strong> {{ game['developer'] }}</p>
   <p><strong>Publisher:</strong> {{ game['publisher'] }}</p>
   <p><strong>Metacritic Score:</strong> {{ game['metacritic_score'] }}</p>
-
-  <!-- Placeholder for video content (e.g., trailer) -->
-  <div class="video-container">
-    <video controls>
-      <source src="#" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <!-- Placeholders for game screenshots or images -->
+  <p><strong>Description:</strong> {{ game['description'] }}</p>
+  
+  <!-- Display three screenshots side-by-side -->
   <div class="image-container">
-    <img src="#" alt="Screenshot 1" />
-    <img src="#" alt="Screenshot 2" />
+    {% if game['image_url'] %}
+      <img src="{{ game['image_url'] }}" alt="Screenshot 1 of {{ game['title'] }}" style="max-width:30%; height:auto; margin-right: 2%;">
+    {% endif %}
+    {% if game['image_url2'] %}
+      <img src="{{ game['image_url2'] }}" alt="Screenshot 2 of {{ game['title'] }}" style="max-width:30%; height:auto; margin-right: 2%;">
+    {% endif %}
+    {% if game['image_url3'] %}
+      <img src="{{ game['image_url3'] }}" alt="Screenshot 3 of {{ game['title'] }}" style="max-width:30%; height:auto;">
+    {% endif %}
   </div>
-
-  <!-- Additional game description -->
-  <div class="game-description">
-    <p>
-      Here you can add more details about the game, storyline, or additional media.
-    </p>
-  </div>
-
-  <!-- Link back to the home page -->
+  
   <a href="{{ url_for('home') }}" class="btn-fade">Back to Home</a>
 </div>
 {% endblock %}
