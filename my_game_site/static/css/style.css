@@ -234,3 +234,88 @@ main {
   font-size: 1.6rem;        /* Smaller font size */
   margin-top: 2rem;         /* Added margin-top to lower the button */
 }
+/* Additional styling for two-column layout on the search page */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+}
+.search-form-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+.search-results-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+/* Additional styling for two-column layout on the search page (for search results only) */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search-results-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+/* Ensure the search form container occupies its own space */
+.search-form-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+/* Additional styling for search page layout when a search is performed */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Style for the search results column */
+.search-results-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+/* Ensure the search form container has a fixed max width and remains centered when not searched */
+.search-form-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+/* Additional styling for search page layout when a search is performed */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.search-results-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.search-form-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+.date-info {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+

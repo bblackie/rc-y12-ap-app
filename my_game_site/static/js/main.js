@@ -1,23 +1,35 @@
-// static/js/main.js
-
-// When the DOM is fully loaded, execute the following code
 document.addEventListener("DOMContentLoaded", function () {
-  // Log to the console to confirm that the JavaScript file has been loaded
   console.log("JavaScript loaded!");
 
-  // Select elements that will have the fade-in effect
+  // Fade-in effect for selected elements
   const fadeElems = document.querySelectorAll(
     ".btn-fade, .home-container, .search-page, .game-detail-container"
   );
-
-  // Loop over each selected element
   fadeElems.forEach((elem) => {
-    // Set initial opacity to 0 (invisible)
     elem.style.opacity = 0;
-    // After a short delay, apply the transition effect to fade in the element
     setTimeout(() => {
       elem.style.transition = "opacity 1s";
-      elem.style.opacity = 1; // Fade the element in to full opacity
-    }, 100); // 100ms delay before starting the fade-in
+      elem.style.opacity = 1;
+    }, 100);
   });
+
+  // Initialize flatpickr for minimum release date input
+  var releaseDateMinInput = document.getElementById("release-date-min");
+  if (releaseDateMinInput) {
+    flatpickr(releaseDateMinInput, {
+      dateFormat: "Y-m-d",
+      minDate: "2000-01-01",
+      maxDate: "2024-12-31",
+    });
+  }
+
+  // Initialize flatpickr for maximum release date input
+  var releaseDateMaxInput = document.getElementById("release-date-max");
+  if (releaseDateMaxInput) {
+    flatpickr(releaseDateMaxInput, {
+      dateFormat: "Y-m-d",
+      minDate: "2000-01-01",
+      maxDate: "2024-12-31",
+    });
+  }
 });
