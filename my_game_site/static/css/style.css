@@ -1,6 +1,8 @@
 /* static/css/style.css */
 
-/* Basic reset for all elements */
+/* ---------------------------
+   Basic Reset & Global Styles
+--------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -8,102 +10,118 @@
   font-family: Arial, sans-serif;
 }
 
-/* Body styling for background and text color */
+/* Increase the global font size */
 body {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text */
+  font-size: 18px; /* Slightly larger text */
 }
 
-/* Header styling with dark background and centered text */
+/* ---------------------------
+   Header, Navigation & Footer
+--------------------------- */
 header {
-  background-color: #222;
-  padding: 1rem;
+  background-color: #222; /* Dark header background */
+  padding: 1.5rem;
   text-align: center;
 }
 
-/* Header title styling */
 header h1 a {
   color: #fff;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
-/* Navigation menu styling */
 nav ul {
   list-style: none;
   margin-top: 1rem;
 }
 
-/* Navigation list items displayed inline */
 nav ul li {
   display: inline-block;
   margin: 0 1rem;
 }
 
-/* Navigation links styling */
 nav ul li a {
   color: #ccc;
   text-decoration: none;
+  font-size: 1.2rem;
 }
 
-/* Hover effect for navigation links */
 nav ul li a:hover {
   color: #fff;
 }
 
-/* Footer styling */
 footer {
   background-color: #222;
   color: #ccc;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem;
   margin-top: 2rem;
 }
 
-/* Main content area: centered and with max width */
+/* ---------------------------
+   Main Content Area
+--------------------------- */
 main {
   padding: 1rem;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Home page container styling */
+/* ---------------------------
+   Home Page Styling
+--------------------------- */
 .home-container {
   text-align: center;
 }
 
-/* Big search bar section with background image */
+/* Big search bar with background image */
 .big-search-bar {
   background-size: cover;
   background-position: center;
-  padding: 4rem 2rem;
-  color: #fff;
+  padding: 6rem 2rem;
   margin-bottom: 2rem;
 }
 
-/* Big search bar heading styling */
 .big-search-bar h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: #000; /* Black heading for high contrast */
 }
 
-/* Big button styling for the search call-to-action */
-.big-button {
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
+/* ---------------------------
+   Buttons - Awesome, Big, Bold
+--------------------------- */
+.btn-fade, .big-button {
+  display: inline-block;
+  background-color: #000;  /* Sleek black background */
+  color: #fff;             /* Bold white text */
+  padding: 1.5rem 3rem;     /* Big padding for a huge button */
+  font-size: 2rem;         /* Big font size */
+  text-decoration: none;
+  border-radius: 8px;      /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Subtle shadow for depth */
 }
 
-/* Games list header styling */
+.btn-fade:hover, .big-button:hover {
+  background-color: #333;  /* Slightly lighter black on hover */
+  transform: scale(1.05);
+}
+
+/* ---------------------------
+   Game List Styling on Home Page
+--------------------------- */
 .games-list h2 {
   margin: 2rem 0 1rem;
 }
 
-/* Remove default list style for game list */
 .games-list ul {
   list-style: none;
 }
 
-/* Individual game list item styling */
+/* Each game item container */
 .games-list li {
   background-color: #fff;
   margin: 0.5rem 0;
@@ -112,41 +130,57 @@ main {
   text-align: left;
 }
 
-/* Search page container styling */
+/* New button style for game links */
+.game-link-button {
+  display: inline-block;
+  background-color: #000;  /* Black background */
+  color: #fff;             /* White text */
+  padding: 0.8rem 1.5rem;   /* Comfortable padding */
+  font-size: 1.4rem;       /* Legible font size */
+  text-decoration: none;
+  border-radius: 5px;      /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.game-link-button:hover {
+  background-color: #333;  /* Slightly lighter black on hover */
+  transform: scale(1.05);
+}
+
+/* ---------------------------
+   Search Page Styling
+--------------------------- */
 .search-page {
   text-align: center;
 }
 
-/* Search form styling: centered, with a fixed max width */
 .search-form {
   display: inline-block;
   text-align: left;
   background-color: #fff;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 5px;
   margin-bottom: 2rem;
   width: 100%;
   max-width: 500px;
 }
 
-/* Styling for each group within the search form */
 .search-form .form-group {
   margin-bottom: 1rem;
 }
 
-/* Label styling within the search form */
 .search-form label {
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Input styling for text, date, and range inputs */
 .search-form input[type="text"],
 .search-form input[type="date"],
 .search-form input[type="range"] {
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 0.3rem;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Search results container styling */
@@ -154,57 +188,49 @@ main {
   text-align: left;
   display: inline-block;
   background-color: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 5px;
 }
 
-/* Static game list container in the search page */
+/* Static game list styling in search page */
 .game-list {
   margin-top: 2rem;
   text-align: left;
   display: inline-block;
   background-color: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 5px;
 }
 
-/* Game detail page container styling */
+/* ---------------------------
+   Game Detail Page Styling
+--------------------------- */
 .game-detail-container {
   background-color: #fff;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 5px;
   text-align: center;
 }
 
-/* Video container styling within the game detail page */
 .game-detail-container .video-container {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
-/* Image container styling for game screenshots */
 .game-detail-container .image-container img {
-  max-width: 200px;
+  max-width: 250px;
   margin: 0.5rem;
 }
 
-/* Game description styling within the game detail page */
 .game-detail-container .game-description {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
-/* Button styling with fade animation */
-.btn-fade {
-  display: inline-block;
-  background-color: #333;
-  color: #fff;
-  padding: 0.7rem 1.2rem;
-  text-decoration: none;
-  border-radius: 3px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-/* Hover effect for buttons */
-.btn-fade:hover {
-  background-color: #555;
-  transform: scale(1.05);
+/* ---------------------------
+   Game Detail Page Button Override
+   (Smaller and Lower Back Button)
+--------------------------- */
+.game-detail-container .btn-fade {
+  padding: 1rem 2rem;      /* Smaller padding than global btn-fade */
+  font-size: 1.6rem;        /* Smaller font size */
+  margin-top: 2rem;         /* Added margin-top to lower the button */
 }
