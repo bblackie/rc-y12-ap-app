@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Home - My Awesome Game Site{% endblock %}
-
 {% block content %}
 <div class="home-container">
   <div class="big-search-bar" style="background-image: url('{{ url_for('static', filename='images/searchbar-bg.jpg') }}');">
     <h2>Find Your Next Game!</h2>
     <a href="{{ url_for('search') }}" class="btn-fade big-button">Search Games</a>
   </div>
-
-  <!-- Games Grid -->
+  <!-- Games Grid (4x5 layout) -->
   <div class="games-grid">
     {% for game in all_games %}
       <div class="game-block">
@@ -16,6 +14,10 @@
           <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover">
           <div class="game-block-title">{{ game['title'] }}</div>
         </a>
+        <p>Developer: {{ game['developer'] }}</p>
+        <p>Publisher: {{ game['publisher'] }}</p>
+        <p>Score: {{ game['metacritic_score'] }}</p>
+        <p>Age Rating: {{ game['nz_age_rating'] }}</p>
       </div>
     {% endfor %}
   </div>

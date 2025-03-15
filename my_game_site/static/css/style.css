@@ -1,8 +1,4 @@
-/* static/css/style.css */
-
-/* ---------------------------
-   Basic Reset & Global Styles
---------------------------- */
+/* Basic Reset & Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,1086 +6,53 @@
   font-family: Arial, sans-serif;
 }
 
-/* Increase the global font size */
-body {
-  background-color: #f0f0f0; /* Light gray background */
-  color: #333; /* Dark text */
-  font-size: 18px; /* Slightly larger text */
-}
-
-/* ---------------------------
-   Header, Navigation & Footer
---------------------------- */
-header {
-  background-color: #222; /* Dark header background */
-  padding: 1.5rem;
-  text-align: center;
-}
-
-header h1 a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 2.5rem;
-}
-
-nav ul {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 0 1rem;
-}
-
-nav ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
-nav ul li a:hover {
-  color: #fff;
-}
-
-footer {
-  background-color: #222;
-  color: #ccc;
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 2rem;
-}
-
-/* ---------------------------
-   Main Content Area
---------------------------- */
-main {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ---------------------------
-   Home Page Styling
---------------------------- */
-.home-container {
-  text-align: center;
-}
-
-/* Big search bar with background image */
-.big-search-bar {
-  background-size: cover;
-  background-position: center;
-  padding: 6rem 2rem;
-  margin-bottom: 2rem;
-}
-
-.big-search-bar h2 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  color: #000; /* Black heading for high contrast */
-}
-
-/* ---------------------------
-   Buttons - Awesome, Big, Bold
---------------------------- */
-.btn-fade, .big-button {
-  display: inline-block;
-  background-color: #000;  /* Sleek black background */
-  color: #fff;             /* Bold white text */
-  padding: 1.5rem 3rem;     /* Big padding for a huge button */
-  font-size: 2rem;         /* Big font size */
-  text-decoration: none;
-  border-radius: 8px;      /* Rounded corners */
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-}
-
-.btn-fade:hover, .big-button:hover {
-  background-color: #333;  /* Slightly lighter black on hover */
-  transform: scale(1.05);
-}
-
-/* ---------------------------
-   Game List Styling on Home Page
---------------------------- */
-.games-list h2 {
-  margin: 2rem 0 1rem;
-}
-
-.games-list ul {
-  list-style: none;
-}
-
-/* Each game item container */
-.games-list li {
-  background-color: #fff;
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border-radius: 5px;
-  text-align: left;
-}
-
-/* New button style for game links */
-.game-link-button {
-  display: inline-block;
-  background-color: #000;  /* Black background */
-  color: #fff;             /* White text */
-  padding: 0.8rem 1.5rem;   /* Comfortable padding */
-  font-size: 1.4rem;       /* Legible font size */
-  text-decoration: none;
-  border-radius: 5px;      /* Rounded corners */
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-bottom: 0.5rem;
-}
-
-.game-link-button:hover {
-  background-color: #333;  /* Slightly lighter black on hover */
-  transform: scale(1.05);
-}
-
-/* ---------------------------
-   Search Page Styling
---------------------------- */
-.search-page {
-  text-align: center;
-}
-
-.search-form {
-  display: inline-block;
-  text-align: left;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 500px;
-}
-
-.search-form .form-group {
-  margin-bottom: 1rem;
-}
-
-.search-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.search-form input[type="text"],
-.search-form input[type="date"],
-.search-form input[type="range"] {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Search results container styling */
-.search-results {
-  text-align: left;
-  display: inline-block;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 5px;
-}
-
-/* Static game list styling in search page */
-.game-list {
-  margin-top: 2rem;
-  text-align: left;
-  display: inline-block;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 5px;
-}
-
-/* ---------------------------
-   Game Detail Page Styling
---------------------------- */
-.game-detail-container {
-  background-color: #fff;
-  padding: 2.5rem;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.game-detail-container .video-container {
-  margin: 1.5rem 0;
-}
-
-.game-detail-container .image-container img {
-  max-width: 250px;
-  margin: 0.5rem;
-}
-
-.game-detail-container .game-description {
-  margin-top: 1.5rem;
-}
-
-/* ---------------------------
-   Game Detail Page Button Override
-   (Smaller and Lower Back Button)
---------------------------- */
-.game-detail-container .btn-fade {
-  padding: 1rem 2rem;      /* Smaller padding than global btn-fade */
-  font-size: 1.6rem;        /* Smaller font size */
-  margin-top: 2rem;         /* Added margin-top to lower the button */
-}
-/* Additional styling for two-column layout on the search page */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap; /* Allows columns to stack on smaller screens */
-}
-.search-form-container {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-}
-.search-results-container {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-}
-/* Additional styling for two-column layout on the search page (for search results only) */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.search-results-container {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-}
-
-/* Ensure the search form container occupies its own space */
-.search-form-container {
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 2rem;
-}
-/* Additional styling for search page layout when a search is performed */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-/* Style for the search results column */
-.search-results-container {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-}
-
-/* Ensure the search form container has a fixed max width and remains centered when not searched */
-.search-form-container {
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 2rem;
-}
-/* Additional styling for search page layout when a search is performed */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.search-results-container {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-}
-
-.search-form-container {
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 2rem;
-}
-.date-info {
-  font-size: 0.9rem;
-  color: #777;
-  margin-bottom: 0.5rem;
-}
-/* static/css/style.css */
-
-/* Basic reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Body styling */
 body {
   background-color: #f0f0f0;
   color: #333;
-  font-size: 16px;
-}
-
-/* Header and Navigation */
-header {
-  background-color: #222;
-  padding: 1rem;
-  text-align: center;
-}
-
-header h1 a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 2.5rem;
-}
-
-nav ul {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 0 1rem;
-}
-
-nav ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
-nav ul li a:hover {
-  color: #fff;
-}
-
-/* Main content */
-main {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Footer styling */
-footer {
-  background-color: #222;
-  color: #ccc;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-/* Containers */
-.home-container, .search-page, .game-detail-container {
-  margin-bottom: 2rem;
-}
-
-/* Form styling */
-.search-form {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 5px;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Button styling */
-.btn-fade {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-fade:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-/* Center the search form container */
-.search-form-container {
-  margin: 0 auto;
-  max-width: 500px;
-}
-
-/* Search results and game list styling */
-.search-results, .game-list {
-  background-color: #fff;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-radius: 5px;
-}
-
-/* Optional: styling for game links on the home page */
-.game-link-button {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-bottom: 0.5rem;
-}
-
-.game-link-button:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-/* Image and video containers */
-.image-container, .video-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-/* static/css/style.css */
-
-/* Basic reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Body styling */
-body {
-  background-color: #f0f0f0;
-  color: #333;
-  font-size: 16px;
-}
-
-/* Header and Navigation */
-header {
-  background-color: #222;
-  padding: 1rem;
-  text-align: center;
-}
-
-header h1 a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 2.5rem;
-}
-
-nav ul {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 0 1rem;
-}
-
-nav ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
-nav ul li a:hover {
-  color: #fff;
-}
-
-/* Main content */
-main {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Footer styling */
-footer {
-  background-color: #222;
-  color: #ccc;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-/* Containers */
-.home-container, .search-page, .game-detail-container {
-  margin-bottom: 2rem;
-}
-
-/* Form styling */
-.search-form {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 5px;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Button styling */
-.btn-fade {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-fade:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-/* Center the search form container */
-.search-form-container {
-  margin: 0 auto;
-  max-width: 500px;
-}
-
-/* Search results and game list styling */
-.search-results, .game-list {
-  background-color: #fff;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-radius: 5px;
-}
-
-/* Styling for game links on the home and search pages */
-.game-link-button {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-bottom: 0.5rem;
-}
-
-.game-link-button:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-/* Image and video containers */
-.image-container, .video-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-/* Additional styling for two-column layout on the search page when a search is performed */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.search-form-container {
-  width: 100%;
-  max-width: 500px;
-}
-
-.search-results-container {
-  width: 100%;
-  max-width: 500px;
-  margin-top: 0;  /* Remove top margin if needed */
-}
-
-/* Ensure the search form container is centered when no search is performed */
-.game-list {
-  margin-top: 1rem;
-}
-/* static/css/style.css */
-
-/* Basic reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Body styling */
-body {
-  background-color: #f0f0f0;
-  color: #333;
-  font-size: 16px;
-}
-
-/* Header and Navigation */
-header {
-  background-color: #222;
-  padding: 1rem;
-  text-align: center;
-}
-
-header h1 a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 2.5rem;
-}
-
-nav ul {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 0 1rem;
-}
-
-nav ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
-nav ul li a:hover {
-  color: #fff;
-}
-
-/* Main content */
-main {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Footer styling */
-footer {
-  background-color: #222;
-  color: #ccc;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-/* Containers */
-.home-container, .search-page, .game-detail-container {
-  margin-bottom: 2rem;
-}
-
-/* Form styling */
-.search-form {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 5px;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Button styling */
-.btn-fade {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-fade:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-/* Center the search form container */
-.search-form-container {
-  margin: 0 auto;
-  max-width: 500px;
-}
-
-/* Two-column layout for search page when search is performed */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.search-results-container {
-  width: 100%;
-  max-width: 500px;
-  margin-top: 0;
-}
-
-/* Search results and game list styling */
-.search-results, .game-list {
-  background-color: #fff;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-radius: 5px;
-}
-
-/* Styling for game links on the home and search pages */
-.game-link-button {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-bottom: 0.5rem;
-}
-
-.game-link-button:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-/* Image and video containers */
-.image-container, .video-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-/* Increase main container width for larger images */
-main {
-  padding: 1rem;
-  max-width: 1400px;  /* Increased from 1200px */
-  margin: 0 auto;
-}
-
-/* Style for game detail title and subtitles */
-.game-title {
-  font-size: 2.5em;
-  margin-bottom: 0.5em;
-}
-
-.game-subtitle {
-  font-size: 1.8em;
-  margin-bottom: 0.3em;
-}
-
-/* Image container styling */
-.image-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.image-container img {
-  flex: 1;
-  max-width: 32%; /* Three images side-by-side with some margin */
-  height: auto;
-  object-fit: contain; /* Preserves aspect ratio */
-  margin-right: 1%;  /* Add a little space between images */
-}
-
-/* Remove right margin on the last image */
-.image-container img:last-child {
-  margin-right: 0;
-}
-/* Container for game detail images */
-.image-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 2rem auto;
-}
-
-/* Force images to be huge and in proportion */
-.image-container img {
-  width: 1400px;   /* Fixed huge width */
-  height: auto;    /* Maintain aspect ratio */
-  object-fit: contain; /* Ensure the entire image is visible */
-}
-/* Increase text sizes for game detail pages */
-.game-detail-container {
-  font-size: 20px; /* Base font size for the game detail container */
-  line-height: 1.5;
-  padding: 1rem;
-}
-
-.game-detail-container h2 {
-  font-size: 3em;  /* Very large title */
-  margin-bottom: 20px;
-}
-
-.game-detail-container p {
-  font-size: 1.5em;  /* Increase paragraph text size */
-  margin-bottom: 10px;
-}
-
-/* If you have additional subtitles, for example: */
-.game-detail-container h3,
-.game-detail-container .game-subtitle {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-/* Global Base Font Size */
-body {
-  font-size: 18px;  /* Increase the global font size */
-}
-
-/* Header & Navigation (optional, if you want larger nav text) */
-header h1 {
-  font-size: 2.5em;
-}
-nav ul li a {
-  font-size: 1.3em;
-}
-
-/* Home Page Adjustments */
-.home-container h2,
-.big-search-bar h2 {
-  font-size: 3em;  /* Big title for the home page */
-  margin-bottom: 20px;
-}
-.home-container p {
-  font-size: 1.5em;
-}
-
-/* Search Page Adjustments */
-.search-page h2 {
-  font-size: 3em;  /* Big title on the search page */
-  margin-bottom: 20px;
-}
-.search-page .search-form,
-.search-page .search-results,
-.search-page .game-list {
-  font-size: 1.5em;  /* Increase font size for form fields, results, and static list */
-}
-.search-page .form-group label {
-  font-size: 1.3em;
-}
-
-/* Game Detail Page Adjustments */
-.game-detail-container {
-  font-size: 20px; /* Base font size for game detail pages */
-  line-height: 1.5;
-  padding: 1rem;
-}
-.game-detail-container h2 {
-  font-size: 3em;  /* Large title for game details */
-  margin-bottom: 20px;
-}
-.game-detail-container h3,
-.game-detail-container .game-subtitle {
-  font-size: 2em;  /* Larger subtitles for additional info */
-  margin-bottom: 10px;
-}
-.game-detail-container p {
-  font-size: 1.5em;  /* Larger paragraphs */
-  margin-bottom: 10px;
-}
-
-/* Footer Adjustments */
-footer {
-  font-size: 1.5em;  /* Increase footer text size */
-  padding: 1rem;
-  text-align: center;
-}
-/* Big Search Bar on Home Page */
-.big-search-bar {
-  width: 100%;
-  padding: 3rem 2rem;           /* Slightly reduced padding */
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 2rem;
-}
-
-.big-search-bar h2 {
-  font-size: 3.5em;           /* Reduced from 4em */
-  margin-bottom: 1rem;
-  color: #000;
-}
-
-.big-button {
-  font-size: 1.8em;           /* Reduced button text size */
-  padding: 1.3rem 2.5rem;      /* Slightly smaller padding */
-}
-
-/* Search Form Inputs (for the search page) */
-.search-form input[type="text"],
-.search-form input[type="date"] {
-  font-size: 1.3em;           /* Reduced text size in inputs */
-  padding: 0.7em;
-}
-
-/* Overall search form styling */
-.search-form {
-  font-size: 1.3em;           /* Reduced overall form text */
-  padding: 1.5rem;            /* Reduced form padding */
-}
-
-/* Global Base Font and Spacing */
-body {
   font-size: 18px;
 }
 
-/* Home Page: Increase text sizes and display age rating on game cards */
-.games-list li p {
-  font-size: 1.2em;
+/* Header, Navigation & Footer */
+header {
+  background-color: #222;
+  padding: 1rem;
+  text-align: center;
 }
-
-/* Game Detail Page: Big title and subtitles */
-.game-detail-container .game-title {
-  font-size: 3em;
-  margin-bottom: 0.5em;
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5rem;
 }
-.game-detail-container .game-subtitle {
-  font-size: 2em;
-  margin-bottom: 0.3em;
+nav ul {
+  list-style: none;
+  margin-top: 1rem;
 }
-
-/* Styling for Age Rating Info on game detail page */
-.game-detail-container p {
-  margin-bottom: 0.5em;
-  font-size: 1.5em;
+nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
 }
-
-/* Image container styling remains the same */
-.image-container {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+nav ul li a:hover {
+  color: #fff;
+}
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
   margin-top: 2rem;
 }
-
-.image-container img {
-  width: 100%;
-  max-width: 600px;  /* Adjust as needed for large images */
-  height: auto;
-  object-fit: contain;
-}
-
-/* Two-column layout for search page when search is performed */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.search-form-container,
-.search-results-container {
-  width: 100%;
-  max-width: 500px;
-}
-
-/* Game Link Button styling remains the same */
-.game-link-button {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-bottom: 0.5rem;
-}
-.game-link-button:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-/* Checkbox Group Styling for Age Rating */
-.checkbox-group {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-.checkbox-group label {
-  font-size: 1.5em;  /* Larger text for checkboxes */
-}
-
-/* Ensure the overall search form remains consistent */
-.search-form .form-group {
-  margin-bottom: 1rem;
-}
-/* Checkbox Group Styling for NZ Rating */
-.checkbox-group {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-.checkbox-group label {
-  font-size: 1.5em;  /* Larger text for checkboxes */
-}
-
-/* Ensure the search form's form-group spacing remains consistent */
-.search-form .form-group {
-  margin-bottom: 1rem;
-}
-/* Games Grid Layout */
-.games-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;            /* Small space between blocks */
-  margin: 2rem auto;
+main {
+  padding: 1rem;
   max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Game Block Style */
-.game-block {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  transition: transform 0.3s ease;
-}
-
-.game-block:hover {
-  transform: scale(1.02);
-}
-
-/* Cover Image */
-.game-block img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Game Title Overlay */
-.game-block-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  text-align: center;
-  padding: 0.5em;
-  font-size: 1.2em;
-}
-/* Games Grid Layout */
+/* Home Page - Games Grid */
 .games-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1097,353 +60,587 @@ body {
   margin: 2rem auto;
   max-width: 1400px;
 }
-
-/* Game Block Style */
 .game-block {
   border: 2px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.game-block:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.game-block img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+.game-block-title {
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2em;
+}
 
+/* Search Page Styling */
+.search-page {
+  text-align: center;
+}
+
+/* Vertical Filter Box for Search */
+.search-form-container {
+  margin: 0 auto 2rem;
+  max-width: 500px;
+}
+
+/* When search is performed, the filter box stays on the left */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.search-form-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Filter Box Styling */
+.search-form-horizontal {
+  background: #f2f2f2;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 500px;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+.search-form-horizontal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+.full-width {
+  width: 100%;
+}
+
+/* Form Styling */
+.search-form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9em;
+}
+.search-form input[type="text"],
+.search-form input[type="range"],
+.search-form select {
+  width: 100%;
+  padding: 0.4em;
+  font-size: 0.9em;
+}
+
+/* Big Black Search Button */
+.big-search-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.big-search-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Centered Search Button */
+.center-btn {
+  margin: 0 auto;
+  display: block;
+}
+
+/* Search Results Container */
+.search-results-container {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+}
+
+/* Results Grid: 2-column layout (2x10 vertical) */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* Result Card */
+.result-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.result-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.result-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+.result-info {
+  padding: 0.5rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.9em;
+}
+.result-info a.game-link-button {
+  display: block;
+  font-size: 1em;
+  text-decoration: none;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.result-info p {
+  margin: 0.3em 0;
+}
+
+/* When no search is performed: Centered filter box and All Games list */
+.game-list {
+  margin-top: 2rem;
+}
+
+/* Additional Checkbox Group Styling */
+.checkbox-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.checkbox-group label {
+  font-size: 1.2em;
+}
+
+/* Home Page adjustments for consistency (if needed) */
+.home-container {
+  text-align: center;
+}
+/* Basic Reset & Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Header, Navigation & Footer */
+header {
+  background-color: #222;
+  padding: 1rem;
+  text-align: center;
+}
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+nav ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+nav ul li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+nav ul li a:hover {
+  color: #fff;
+}
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+main {
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Home Page - Games Grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 1400px;
+}
+.game-block {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.game-block:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.game-block img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+.game-block-title {
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2em;
+}
+
+/* Search Page Styling */
+.search-page {
+  text-align: center;
+}
+
+/* Vertical Filter Box for Search (always visible) */
+.search-form-container {
+  margin: 0 auto 2rem;
+  max-width: 500px;
+}
+.search-form-container.centered {
+  margin: 0 auto 2rem;
+}
+.search-form-horizontal {
+  background: #f2f2f2;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 500px;
+  text-align: left;
+  margin: 0 auto 2rem;
+}
+.search-form-horizontal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+.full-width {
+  width: 100%;
+}
+
+/* Form Styling */
+.search-form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9em;
+}
+.search-form input[type="text"],
+.search-form input[type="range"],
+.search-form select {
+  width: 100%;
+  padding: 0.4em;
+  font-size: 0.9em;
+}
+
+/* Big Black Search Button (same for all) */
+.btn-fade, .big-search-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-fade:hover, .big-search-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Centered Search Button */
+.center-btn {
+  margin: 0 auto;
+  display: block;
+}
+
+/* Two-Column Layout for Search (when search is performed) */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.search-results-container {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+}
+
+/* Results Grid: 2 columns (2x10 layout) */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* Result Card */
+.result-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.result-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.result-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+.result-info {
+  padding: 0.5rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.9em;
+}
+.result-info a.game-link-button {
+  display: block;
+  font-size: 1em;
+  text-decoration: none;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.result-info p {
+  margin: 0.3em 0;
+}
+
+/* When no search is performed: Centered All Games List */
+.game-list {
+  margin-top: 2rem;
+}
+
+/* Checkbox Group Styling */
+.checkbox-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.checkbox-group label {
+  font-size: 1.2em;
+}
+.center-btn {
+  margin: 0 auto;
+  display: block;
+  max-width: 300px; /* Optional: limits the button's width */
+  text-align: center;
+}
+/* ---------------------------
+   Buttons - Awesome, Big, Bold
+--------------------------- */
+.btn-fade, .big-button {
+  display: inline-block;
+  background-color: #000;  /* Black background */
+  color: #fff;             /* White text */
+  padding: 1.2rem 2.2rem;    /* Reduced padding for a slightly smaller button */
+  font-size: 1.8em;         /* Reduced font size */
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-fade:hover, .big-button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* ---------------------------
+   Home Page - Games Grid
+--------------------------- */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 1400px;
+}
+
+.game-block {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 .game-block:hover {
   transform: scale(1.02);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Cover Image */
+/* Reduce image height to 250px for a better fit */
 .game-block img {
   width: 100%;
-  height: auto;
+  height: 250px;
+  object-fit: cover;
   display: block;
 }
 
-/* Game Title Overlay (or below the image) */
-.game-block-title {
-  background-color: #f7f7f7;
-  color: #333;
-  font-size: 1.5em;
-  text-align: center;
-  padding: 0.5em;
-  border-top: 1px solid #ccc;
-}
-/* Horizontal Search Form Layout */
-.search-form-horizontal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
+/* ---------------------------
+   Search Results - Result Card
+--------------------------- */
+.result-card img {
+  width: 100%;
+  height: 250px; /* Reduced height for consistency */
+  object-fit: cover;
+  display: block;
 }
 
-/* Ensure each form group in the horizontal form is flexible */
-.search-form-horizontal .form-group {
-  flex: 1 1 auto;
-  min-width: 120px;
+/* ---------------------------
+   (Other CSS remains unchanged)
+--------------------------- */
+/* Game Detail Container: center all text */
+.game-detail-container {
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 5px;
+  text-align: center; /* Center text */
+  margin: 0 auto;
 }
 
-/* Maintain existing form styling for inputs and labels */
-.search-form .form-group label {
-  font-size: 1.2em;
-  margin-bottom: 0.3em;
+/* Game Title and Subtitles */
+.game-detail-container .game-title {
+  font-size: 3em;
+  margin-bottom: 20px;
 }
-
-.search-form input[type="text"],
-.search-form input[type="range"] {
-  font-size: 1em;
-  padding: 0.5em;
-}
-/* Horizontal Search Form Layout */
-.search-form-horizontal {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.search-form-horizontal .form-group {
-  flex: 1;
-  min-width: 120px;
-}
-
-/* Lower overall text sizes on the search page */
-.search-page h2 {
-  font-size: 2.5em; /* Slightly lower than before */
-}
-.search-page h3 {
+.game-detail-container .game-subtitle {
   font-size: 2em;
-}
-.search-form .form-group label {
-  font-size: 1em; /* Lower than 1.2em */
-}
-.search-form input[type="text"],
-.search-form input[type="range"],
-.search-form select {
-  font-size: 1em;
-  padding: 0.4em;
+  margin-bottom: 10px;
 }
 
-/* Checkbox group styling (if not already defined) */
-.checkbox-group {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-.checkbox-group label {
-  font-size: 1.5em;
-}
-/* Horizontal Search Form Layout */
-.search-form-horizontal {
+/* Image Container: center images and allow wrapping */
+.image-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: center; /* Center images horizontally */
   gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.search-form-horizontal .form-group {
-  flex: 1;
-  min-width: 120px;
-}
-
-/* Allow full-width elements to span entire row */
-.full-width {
-  flex-basis: 100%;
-}
-
-/* Lower text sizes for form elements */
-.search-form .form-group label {
-  font-size: 0.9em;
-  margin-bottom: 0.3em;
-}
-.search-form input[type="text"],
-.search-form input[type="range"],
-.search-form select {
-  font-size: 0.9em;
-  padding: 0.4em;
-}
-
-/* Headings */
-.search-page h2 {
-  font-size: 2.2em;
-}
-.search-page h3 {
-  font-size: 1.8em;
-}
-
-/* Checkbox group styling */
-.checkbox-group {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-.checkbox-group label {
-  font-size: 1.2em;
-}
-/* Search Container: Two-column layout */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
   margin-top: 2rem;
 }
 
-/* Left column: Search form remains as is */
-.search-form-container {
-  width: 100%;
-  max-width: 500px;
+/* Image Styling: fixed width so three images fit the screen */
+.image-container img {
+  width: 300px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Show entire image */
+  margin: 0 auto;
 }
 
-/* Right column: Results container */
-.search-results-container {
-  width: 100%;
-  max-width: 700px;
-}
-
-/* Results Grid: Display cards in a grid layout */
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-/* Result Card Style */
-.result-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fff;
-}
-
-.result-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* Cover Image in Result Card */
-.result-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* Result Info */
-.result-info {
-  padding: 0.5rem;
-  font-size: 0.9em;
-}
-
-.result-info a.game-link-button {
-  font-size: 1em;
-  margin-bottom: 0.5rem;
+/* Centered Back to Home Button */
+.center-btn {
+  margin: 2rem auto 0 auto; /* 2rem top margin for spacing, centered horizontally */
   display: block;
-  text-decoration: none;
-  color: #000;
-}
-
-.result-info p {
-  margin: 0.3em 0;
-}
-/* Two-Column Layout for Search Page */
-.search-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-/* Left column: Search Form */
-.search-form-container {
-  width: 100%;
-  max-width: 500px;
-}
-
-/* Right column: Results Container */
-.search-results-container {
-  width: 100%;
-  max-width: 700px;
-}
-
-/* Results Grid Layout */
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-/* Result Card Style */
-.result-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fff;
-}
-
-.result-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* Cover Image in Result Card */
-.result-card img {
-  width: 100%;
-  height: 300px; /* Make cover images same size as on home page */
-  object-fit: cover;
-  display: block;
-}
-
-/* Result Info styling */
-.result-info {
-  padding: 0.5rem;
-  background-color: #000; /* Black background */
-  color: #fff; /* White text */
-  font-size: 0.9em;
-}
-
-.result-info a.game-link-button {
-  font-size: 1em;
-  margin-bottom: 0.5rem;
-  display: block;
-  text-decoration: none;
-  color: #fff;
-}
-
-.result-info p {
-  margin: 0.3em 0;
-}
-
-/* Horizontal Search Form Layout */
-.search-form-horizontal {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-  background: #f2f2f2;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.search-form-horizontal form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.full-width {
-  flex-basis: 100%;
-}
-
-.search-form .form-group {
-  margin: 0;
-}
-
-.search-form .form-group label {
-  font-size: 0.9em;
-  margin-bottom: 0.3em;
-}
-
-.search-form input[type="text"],
-.search-form input[type="range"],
-.search-form select {
-  font-size: 0.9em;
-  padding: 0.4em;
-}
-
-.checkbox-group {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-.checkbox-group label {
-  font-size: 1.2em;
-}
-
-/* Headings */
-.search-page h2 {
-  font-size: 2.2em;
+  max-width: 300px; /* Optional: limit width if needed */
   text-align: center;
-  margin-bottom: 1rem;
 }
 
-.search-page h3 {
-  font-size: 1.8em;
-  margin-top: 1rem;
+/* Ensure buttons share the same style (big black with white text) */
+.btn-fade, .big-search-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
+.btn-fade:hover, .big-search-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+.result-card img {
+  width: 100%;
+  height: 400px; /* Increased from 300px */
+  object-fit: cover; /* Ensures the image fills the box, may crop if aspect ratio differs */
+  display: block;
+}
+/* Make result cards bigger on the search/all games page */
+.result-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Increased cover image height to 400px */
+.result-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+.game-block img {
+  width: 100%;
+  height: 400px;  /* Adjust height as needed */
+  object-fit: cover; /* Fills the entire container */
+  display: block;
+}
+/* For the All Games section (when no search is performed), use a 4-column grid */
+.game-list .results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+
+

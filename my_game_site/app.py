@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import random
@@ -22,19 +21,19 @@ def home():
 def search():
     conn = get_db_connection()
     if request.method == "POST":
-        # Use one search term for title, developer, or publisher
         search_term = request.form.get("search_term", "").strip()
         score_min = request.form.get("score-min", "")
         score_max = request.form.get("score-max", "")
         date_min = request.form.get("date-min", "")
         date_max = request.form.get("date-max", "")
-        nz_age_ratings = request.form.getlist("nz_rating")  # Retrieve multiple NZ ratings
+        nz_ratings = request.form.getlist("nz_rating")  # Retrieve multiple NZ ratings
 
         query = "SELECT * FROM games WHERE 1=1"
         params = []
 
+        # Wildcard, case-insensitive search across title, developer, publisher
         if search_term:
-            query += " AND (title LIKE ? OR developer LIKE ? OR publisher LIKE ?)"
+            query += " AND (title LIKE ? COLLATE NOCASE OR developer LIKE ? COLLATE NOCASE OR publisher LIKE ? COLLATE NOCASE)"
             wildcard = f"%{search_term}%"
             params.extend([wildcard, wildcard, wildcard])
         if score_min:
@@ -49,10 +48,10 @@ def search():
         if date_max:
             query += " AND release_date <= ?"
             params.append(date_max)
-        if nz_age_ratings:
-            placeholders = ','.join('?' * len(nz_age_ratings))
+        if nz_ratings:
+            placeholders = ','.join('?' * len(nz_ratings))
             query += f" AND nz_age_rating IN ({placeholders})"
-            params.extend(nz_age_ratings)
+            params.extend(nz_ratings)
 
         results = conn.execute(query, tuple(params)).fetchall()
         all_games = conn.execute("SELECT * FROM games").fetchall()

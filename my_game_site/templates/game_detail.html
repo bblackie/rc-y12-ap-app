@@ -1,28 +1,18 @@
 {% extends "base.html" %}
 {% block title %}{{ game['title'] }} - My Awesome Game Site{% endblock %}
-
 {% block content %}
 <div class="game-detail-container">
-  <!-- Big Title -->
   <h2 class="game-title">{{ game['title'] }}</h2>
-  
-  <!-- Three Subtitles -->
   <h3 class="game-subtitle">Genre: {{ game['genre'] }}</h3>
   <h3 class="game-subtitle">Developer: {{ game['developer'] }}</h3>
   <h3 class="game-subtitle">Publisher: {{ game['publisher'] }}</h3>
-  
-  <!-- Additional Details -->
   <p><strong>Release Date:</strong> {{ game['release_date'] }}</p>
   <p><strong>Metacritic Score:</strong> {{ game['metacritic_score'] }}</p>
   <p><strong>Description:</strong> {{ game['description'] }}</p>
-  
-  <!-- NZ Age Rating and Explanation -->
   <p>
     <strong>NZ Age Rating:</strong> {{ game['nz_age_rating'] }}<br>
     <strong>Rating Explanation:</strong> {{ game['nz_age_rating_reason'] }}
   </p>
-  
-  <!-- Display three screenshots side-by-side -->
   <div class="image-container">
     {% if game['image_url'] %}
       <img src="{{ game['image_url'] }}" alt="Screenshot 1 of {{ game['title'] }}">
@@ -34,7 +24,6 @@
       <img src="{{ game['image_url3'] }}" alt="Screenshot 3 of {{ game['title'] }}">
     {% endif %}
   </div>
-  
-  <a href="{{ url_for('home') }}" class="btn-fade">Back to Home</a>
+  <a href="{{ url_for('home') }}" class="btn-fade center-btn">Back to Home</a>
 </div>
 {% endblock %}
