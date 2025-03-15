@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import random
+from rapidfuzz import fuzz  # For fuzzy matching
 
 app = Flask(__name__)
 DATABASE = 'games.db'
@@ -21,17 +22,18 @@ def home():
 def search():
     conn = get_db_connection()
     if request.method == "POST":
+        # Retrieve filters from form
         search_term = request.form.get("search_term", "").strip()
         score_min = request.form.get("score-min", "")
         score_max = request.form.get("score-max", "")
         date_min = request.form.get("date-min", "")
         date_max = request.form.get("date-max", "")
-        nz_ratings = request.form.getlist("nz_rating")  # Retrieve multiple NZ ratings
+        nz_ratings = request.form.getlist("nz_rating")  # Multiple selections
 
         query = "SELECT * FROM games WHERE 1=1"
         params = []
 
-        # Wildcard, case-insensitive search across title, developer, publisher
+        # Standard wildcard, case‑insensitive search across title, developer, publisher
         if search_term:
             query += " AND (title LIKE ? COLLATE NOCASE OR developer LIKE ? COLLATE NOCASE OR publisher LIKE ? COLLATE NOCASE)"
             wildcard = f"%{search_term}%"
@@ -54,6 +56,18 @@ def search():
             params.extend(nz_ratings)
 
         results = conn.execute(query, tuple(params)).fetchall()
+
+        # --- Fuzzy Matching Enhancement ---
+        # Even if the search term is mistyped or has extra spaces, filter the results further.
+        if search_term:
+            threshold = 70  # Adjust threshold (0-100); lower values are more lenient.
+            results = [game for game in results if (
+                fuzz.ratio(search_term.lower(), game["title"].lower()) >= threshold or
+                fuzz.ratio(search_term.lower(), game["developer"].lower()) >= threshold or
+                fuzz.ratio(search_term.lower(), game["publisher"].lower()) >= threshold
+            )]
+        # --- End Fuzzy Matching ---
+        
         all_games = conn.execute("SELECT * FROM games").fetchall()
         conn.close()
         return render_template("search.html", searched=True, results=results, all_games=all_games)
