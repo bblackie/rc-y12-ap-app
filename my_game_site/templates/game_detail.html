@@ -1,4 +1,3 @@
-<!-- templates/game_detail.html -->
 {% extends "base.html" %}
 {% block title %}{{ game['title'] }} - My Awesome Game Site{% endblock %}
 
@@ -12,10 +11,16 @@
   <h3 class="game-subtitle">Developer: {{ game['developer'] }}</h3>
   <h3 class="game-subtitle">Publisher: {{ game['publisher'] }}</h3>
   
-  <!-- Additional details -->
+  <!-- Additional Details -->
   <p><strong>Release Date:</strong> {{ game['release_date'] }}</p>
   <p><strong>Metacritic Score:</strong> {{ game['metacritic_score'] }}</p>
   <p><strong>Description:</strong> {{ game['description'] }}</p>
+  
+  <!-- NZ Age Rating and Explanation -->
+  <p>
+    <strong>NZ Age Rating:</strong> {{ game['nz_age_rating'] }}<br>
+    <strong>Rating Explanation:</strong> {{ game['nz_age_rating_reason'] }}
+  </p>
   
   <!-- Display three screenshots side-by-side -->
   <div class="image-container">

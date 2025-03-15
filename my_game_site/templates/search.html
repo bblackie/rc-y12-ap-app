@@ -1,4 +1,3 @@
-<!-- templates/search.html -->
 {% extends "base.html" %}
 {% block title %}Search Games - My Awesome Game Site{% endblock %}
 
@@ -8,7 +7,7 @@
   {% if searched %}
     <!-- Two-column layout: search form on left, results on right -->
     <div class="search-container">
-      <!-- Left column: Search form -->
+      <!-- Left column: Search Form -->
       <div class="search-form-container">
         <form method="POST" class="search-form">
           <div class="form-group">
@@ -33,18 +32,26 @@
             <input type="range" name="score-max" id="score-max" min="0" max="100" value="100" oninput="scoreMaxOutput.value = this.value">
             <output id="scoreMaxOutput">100</output>
           </div>
-          <!-- Release Date Calendar Inputs with bracketed titles -->
+          <!-- NZ Rating Filter as Checkboxes -->
           <div class="form-group">
-            <label for="release-date-min">
-              Release Date [Minimum] – The minimum release date is 2000-01-01
-            </label>
-            <input type="text" name="date-min" id="release-date-min" placeholder="Select minimum date">
+            <label>NZ Rating (select one or more):</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="nz_rating" value="G"> G</label>
+              <label><input type="checkbox" name="nz_rating" value="PG"> PG</label>
+              <label><input type="checkbox" name="nz_rating" value="M"> M</label>
+              <label><input type="checkbox" name="nz_rating" value="R13"> R13</label>
+              <label><input type="checkbox" name="nz_rating" value="R16"> R16</label>
+              <label><input type="checkbox" name="nz_rating" value="R18"> R18</label>
+            </div>
+          </div>
+          <!-- Release Date Inputs -->
+          <div class="form-group">
+            <label for="release-date-min">Release Date [Minimum]</label>
+            <input type="text" name="date-min" id="release-date-min" placeholder="2000-01-01">
           </div>
           <div class="form-group">
-            <label for="release-date-max">
-              Release Date [Maximum] – The maximum release date is 2024-12-31
-            </label>
-            <input type="text" name="date-max" id="release-date-max" placeholder="Select maximum date">
+            <label for="release-date-max">Release Date [Maximum]</label>
+            <input type="text" name="date-max" id="release-date-max" placeholder="2024-12-31">
           </div>
           <button type="submit" class="btn-fade">Search</button>
         </form>
@@ -55,18 +62,24 @@
         <div class="search-results">
           <h3>Results:</h3>
           {% if results and results|length > 0 %}
-            <ul>
+            <div class="results-grid">
               {% for game in results %}
-                <li>
-                  <a href="{{ url_for('game_detail', game_id=game['id']) }}" class="game-link-button">
-                    {{ game['title'] }}
+                <div class="result-card">
+                  <a href="{{ url_for('game_detail', game_id=game['id']) }}">
+                    <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover">
                   </a>
-                  <p>Developer: {{ game['developer'] }}</p>
-                  <p>Publisher: {{ game['publisher'] }}</p>
-                  <p>Metacritic Score: {{ game['metacritic_score'] }}</p>
-                </li>
+                  <div class="result-info">
+                    <a href="{{ url_for('game_detail', game_id=game['id']) }}" class="game-link-button">
+                      {{ game['title'] }}
+                    </a>
+                    <p>Developer: {{ game['developer'] }}</p>
+                    <p>Publisher: {{ game['publisher'] }}</p>
+                    <p>Score: {{ game['metacritic_score'] }}</p>
+                    <p>NZ Rating: {{ game['nz_age_rating'] }}</p>
+                  </div>
+                </div>
               {% endfor %}
-            </ul>
+            </div>
           {% else %}
             <p>No results found.</p>
           {% endif %}
@@ -74,61 +87,81 @@
       </div>
     </div>
   {% else %}
-    <!-- When no search is performed, display the search form centered and the static game list below -->
-    <div class="search-form-container" style="margin: 0 auto; max-width: 500px;">
-      <form method="POST" class="search-form">
-        <div class="form-group">
-          <label for="developer">Developer</label>
-          <input type="text" name="developer" id="developer" placeholder="e.g. Nintendo">
+    <!-- When no search is performed, display the search form on left and All Games on right -->
+    <div class="search-container">
+      <div class="search-form-container">
+        <form method="POST" class="search-form">
+          <div class="form-group">
+            <label for="developer">Developer</label>
+            <input type="text" name="developer" id="developer" placeholder="e.g. Nintendo">
+          </div>
+          <div class="form-group">
+            <label for="publisher">Publisher</label>
+            <input type="text" name="publisher" id="publisher" placeholder="e.g. Rockstar Games">
+          </div>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" placeholder="e.g. Elden Ring">
+          </div>
+          <div class="form-group">
+            <label for="score-min">Metacritic Score Min</label>
+            <input type="range" name="score-min" id="score-min" min="0" max="100" value="0" oninput="scoreMinOutput.value = this.value">
+            <output id="scoreMinOutput">0</output>
+          </div>
+          <div class="form-group">
+            <label for="score-max">Metacritic Score Max</label>
+            <input type="range" name="score-max" id="score-max" min="0" max="100" value="100" oninput="scoreMaxOutput.value = this.value">
+            <output id="scoreMaxOutput">100</output>
+          </div>
+          <!-- NZ Rating Filter as Checkboxes -->
+          <div class="form-group">
+            <label>NZ Rating (select one or more):</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="nz_rating" value="G"> G</label>
+              <label><input type="checkbox" name="nz_rating" value="PG"> PG</label>
+              <label><input type="checkbox" name="nz_rating" value="M"> M</label>
+              <label><input type="checkbox" name="nz_rating" value="R13"> R13</label>
+              <label><input type="checkbox" name="nz_rating" value="R16"> R16</label>
+              <label><input type="checkbox" name="nz_rating" value="R18"> R18</label>
+            </div>
+          </div>
+          <!-- Release Date Inputs -->
+          <div class="form-group">
+            <label for="release-date-min">Release Date [Minimum]</label>
+            <input type="text" name="date-min" id="release-date-min" placeholder="2000-01-01">
+          </div>
+          <div class="form-group">
+            <label for="release-date-max">Release Date [Maximum]</label>
+            <input type="text" name="date-max" id="release-date-max" placeholder="2024-12-31">
+          </div>
+          <button type="submit" class="btn-fade">Search</button>
+        </form>
+      </div>
+      
+      <!-- Right Column: All Games List -->
+      <div class="search-results-container">
+        <div class="game-list">
+          <h3>All Games</h3>
+          <div class="results-grid">
+            {% for game in all_games %}
+              <div class="result-card">
+                <a href="{{ url_for('game_detail', game_id=game['id']) }}">
+                  <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover">
+                </a>
+                <div class="result-info">
+                  <a href="{{ url_for('game_detail', game_id=game['id']) }}" class="game-link-button">
+                    {{ game['title'] }}
+                  </a>
+                  <p>Developer: {{ game['developer'] }}</p>
+                  <p>Publisher: {{ game['publisher'] }}</p>
+                  <p>Score: {{ game['metacritic_score'] }}</p>
+                  <p>NZ Rating: {{ game['nz_age_rating'] }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
         </div>
-        <div class="form-group">
-          <label for="publisher">Publisher</label>
-          <input type="text" name="publisher" id="publisher" placeholder="e.g. Rockstar Games">
-        </div>
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" placeholder="e.g. Elden Ring">
-        </div>
-        <div class="form-group">
-          <label for="score-min">Metacritic Score Min</label>
-          <input type="range" name="score-min" id="score-min" min="0" max="100" value="0" oninput="scoreMinOutput.value = this.value">
-          <output id="scoreMinOutput">0</output>
-        </div>
-        <div class="form-group">
-          <label for="score-max">Metacritic Score Max</label>
-          <input type="range" name="score-max" id="score-max" min="0" max="100" value="100" oninput="scoreMaxOutput.value = this.value">
-          <output id="scoreMaxOutput">100</output>
-        </div>
-        <!-- Release Date Calendar Inputs with bracketed titles -->
-        <div class="form-group">
-          <label for="release-date-min">
-            Release Date [Minimum] – The minimum release date is 2000-01-01
-          </label>
-          <input type="text" name="date-min" id="release-date-min" placeholder="Select minimum date">
-        </div>
-        <div class="form-group">
-          <label for="release-date-max">
-            Release Date [Maximum] – The maximum release date is 2024-12-31
-          </label>
-          <input type="text" name="date-max" id="release-date-max" placeholder="Select maximum date">
-        </div>
-        <button type="submit" class="btn-fade">Search</button>
-      </form>
-    </div>
-    <div class="game-list">
-      <h3>All Games</h3>
-      <ul>
-        {% for game in all_games %}
-          <li>
-            <a href="{{ url_for('game_detail', game_id=game['id']) }}" class="game-link-button">
-              {{ game['title'] }}
-            </a>
-            <p>Developer: {{ game['developer'] }}</p>
-            <p>Publisher: {{ game['publisher'] }}</p>
-            <p>Metacritic Score: {{ game['metacritic_score'] }}</p>
-          </li>
-        {% endfor %}
-      </ul>
+      </div>
     </div>
   {% endif %}
 </div>

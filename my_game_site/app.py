@@ -22,25 +22,21 @@ def home():
 def search():
     conn = get_db_connection()
     if request.method == "POST":
-        developer = request.form.get("developer", "")
-        publisher = request.form.get("publisher", "")
-        title = request.form.get("title", "")
+        # Use one search term for title, developer, or publisher
+        search_term = request.form.get("search_term", "").strip()
         score_min = request.form.get("score-min", "")
         score_max = request.form.get("score-max", "")
         date_min = request.form.get("date-min", "")
         date_max = request.form.get("date-max", "")
+        nz_age_ratings = request.form.getlist("nz_rating")  # Retrieve multiple NZ ratings
 
         query = "SELECT * FROM games WHERE 1=1"
         params = []
-        if developer:
-            query += " AND developer LIKE ?"
-            params.append(f"%{developer}%")
-        if publisher:
-            query += " AND publisher LIKE ?"
-            params.append(f"%{publisher}%")
-        if title:
-            query += " AND title LIKE ?"
-            params.append(f"%{title}%")
+
+        if search_term:
+            query += " AND (title LIKE ? OR developer LIKE ? OR publisher LIKE ?)"
+            wildcard = f"%{search_term}%"
+            params.extend([wildcard, wildcard, wildcard])
         if score_min:
             query += " AND metacritic_score >= ?"
             params.append(score_min)
@@ -53,6 +49,10 @@ def search():
         if date_max:
             query += " AND release_date <= ?"
             params.append(date_max)
+        if nz_age_ratings:
+            placeholders = ','.join('?' * len(nz_age_ratings))
+            query += f" AND nz_age_rating IN ({placeholders})"
+            params.extend(nz_age_ratings)
 
         results = conn.execute(query, tuple(params)).fetchall()
         all_games = conn.execute("SELECT * FROM games").fetchall()
