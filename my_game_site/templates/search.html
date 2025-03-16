@@ -4,8 +4,12 @@
 <div class="search-page">
   <h2>Search Games</h2>
   
+  {% if error %}
+    <p style="color: red; font-weight: bold;">{{ error }}</p>
+  {% endif %}
+  
   {% if searched %}
-    <!-- Two-column layout: Filter box on left, results on right -->
+    <!-- Two-column layout when search is performed -->
     <div class="search-container">
       <!-- Left Column: Filter Box -->
       <div class="search-form-container">
@@ -47,9 +51,9 @@
         </form>
       </div>
       
-      <!-- Right Column: Search Results in 2-column grid (2x10 layout) -->
+      <!-- Right Column: Search Results (2-column grid) -->
       <div class="search-results-container">
-        <h3>Results:</h3>
+        <h3>Search Results:</h3>
         {% if results and results|length > 0 %}
           <div class="results-grid">
             {% for game in results %}
@@ -75,7 +79,7 @@
       </div>
     </div>
   {% else %}
-    <!-- When no search is performed: Centered Filter Box and All Games list underneath in a 4x5 grid -->
+    <!-- When no search is performed: Centered filter box and All Games in a 4x5 grid -->
     <div class="search-form-container centered">
       <form method="POST" class="search-form">
         <div class="form-group full-width">

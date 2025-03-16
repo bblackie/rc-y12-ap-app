@@ -641,6 +641,74 @@ main {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.search-results-container {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+}
+/* Search Container: Two-column layout when search is performed */
+.search-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.search-results-container {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+}
 
+/* Results Grid: For search results (2x10 layout) */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* All Games List: For default view (4x5 grid) */
+.game-list .results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* Result Card Images: Set to 400px height */
+.result-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Button Styling */
+.btn-fade, .big-search-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-fade:hover, .big-search-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+.center-btn {
+  margin: 0 auto;
+  display: block;
+  max-width: 300px;
+  text-align: center;
+}
 
 
