@@ -42,12 +42,15 @@ def home():
     conn.close()
     return render_template("index.html", all_games=games)
 
-# Main search page that shows the separate search forms.
+# The search page now fetches up to 20 publishers and 20 developers.
 @app.route('/search')
 def search():
-    return render_template("search.html")
+    conn = get_db_connection()
+    publishers = conn.execute("SELECT name FROM publishers LIMIT 20").fetchall()
+    developers = conn.execute("SELECT name FROM developers LIMIT 20").fetchall()
+    conn.close()
+    return render_template("search.html", publishers=publishers, developers=developers)
 
-# Search by Title, Developer, or Publisher.
 @app.route('/search_by_title', methods=["POST"])
 def search_by_title():
     search_term = request.form.get("search_term", "").strip()
@@ -57,17 +60,12 @@ def search_by_title():
     conn = get_db_connection()
     results = conn.execute(query, tuple(params)).fetchall()
     conn.close()
-    return render_template("search_results.html",
-                           results=results,
-                           search_type="Title/Developer/Publisher",
-                           search_value=search_term)
+    return render_template("search_results.html", results=results, search_type="Title/Developer/Publisher", search_value=search_term)
 
-# Search by Metacritic Score.
 @app.route('/search_by_score', methods=["POST"])
 def search_by_score():
     score_min = request.form.get("score_min", "").strip()
     score_max = request.form.get("score_max", "").strip()
-    # Set defaults if not provided.
     if not score_min:
         score_min = 0
     if not score_max:
@@ -77,12 +75,8 @@ def search_by_score():
     conn = get_db_connection()
     results = conn.execute(query, tuple(params)).fetchall()
     conn.close()
-    return render_template("search_results.html",
-                           results=results,
-                           search_type="Metacritic Score",
-                           search_value=f"{score_min} to {score_max}")
+    return render_template("search_results.html", results=results, search_type="Metacritic Score", search_value=f"{score_min} to {score_max}")
 
-# Search by Release Date with validation.
 @app.route('/search_by_date', methods=["POST"])
 def search_by_date():
     date_min = request.form.get("date_min", "").strip()
@@ -91,7 +85,7 @@ def search_by_date():
         date_min_obj = datetime.strptime(date_min, "%Y-%m-%d")
         date_max_obj = datetime.strptime(date_max, "%Y-%m-%d")
     except ValueError:
-        error = "Invalid date format. Please use YYYY-MM-DD and select dates between 2000-01-01 and 2025-01-01."
+        error = "Invalid date format. Please use YYYY-MM-DD."
         return render_template("search.html", error=error)
     
     allowed_min = datetime(2000, 1, 1)
@@ -105,15 +99,11 @@ def search_by_date():
     conn = get_db_connection()
     results = conn.execute(query, tuple(params)).fetchall()
     conn.close()
-    return render_template("search_results.html",
-                           results=results,
-                           search_type="Release Date",
-                           search_value=f"{date_min} to {date_max}")
+    return render_template("search_results.html", results=results, search_type="Release Date", search_value=f"{date_min} to {date_max}")
 
-# Search by Age Rating with validation.
 @app.route('/search_by_age', methods=["POST"])
 def search_by_age():
-    age_rating = request.form.get("age_rating", "").strip()
+    age_rating = request.form.get("age_rating", "").strip().upper()  # Convert input to uppercase
     allowed_age_ratings = ["G", "PG", "M", "R13", "R16", "R18"]
     if age_rating not in allowed_age_ratings:
         error = "Invalid age rating. Valid options are: " + ", ".join(allowed_age_ratings) + "."
@@ -124,10 +114,7 @@ def search_by_age():
     conn = get_db_connection()
     results = conn.execute(query, tuple(params)).fetchall()
     conn.close()
-    return render_template("search_results.html",
-                           results=results,
-                           search_type="Age Rating",
-                           search_value=age_rating)
+    return render_template("search_results.html", results=results, search_type="Age Rating", search_value=age_rating)
 
 @app.route("/game/<int:game_id>")
 def game_detail(game_id):
