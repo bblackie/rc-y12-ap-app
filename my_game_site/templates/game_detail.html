@@ -10,20 +10,20 @@
   <p><strong>Metacritic Score:</strong> {{ game['metacritic_score'] }}</p>
   <p><strong>Description:</strong> {{ game['description'] }}</p>
   <p>
-    <strong>NZ Age Rating:</strong> {{ game['nz_age_rating'] }}<br>
-    <strong>Rating Explanation:</strong> {{ game['nz_age_rating_reason'] }}
+    <strong>Age Rating:</strong> {{ game['age_rating'] }}<br>
+    <strong>Rating Explanation:</strong> {{ game['age_rating_reason'] }}
   </p>
-  <div class="image-container">
+  <div class="image-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem;">
     {% if game['image_url'] %}
-      <img src="{{ game['image_url'] }}" alt="Screenshot 1 of {{ game['title'] }}">
+      <img src="{{ game['image_url'] }}" alt="Screenshot 1 of {{ game['title'] }}" style="width:300px;">
     {% endif %}
     {% if game['image_url2'] %}
-      <img src="{{ game['image_url2'] }}" alt="Screenshot 2 of {{ game['title'] }}">
+      <img src="{{ game['image_url2'] }}" alt="Screenshot 2 of {{ game['title'] }}" style="width:300px;">
     {% endif %}
     {% if game['image_url3'] %}
-      <img src="{{ game['image_url3'] }}" alt="Screenshot 3 of {{ game['title'] }}">
+      <img src="{{ game['image_url3'] }}" alt="Screenshot 3 of {{ game['title'] }}" style="width:300px;">
     {% endif %}
   </div>
-  <a href="{{ url_for('home') }}" class="btn-fade center-btn">Back to Home</a>
+  <a href="{{ url_for('home') }}" class="btn-fade center-btn" style="margin-top: 2rem;">Back to Home</a>
 </div>
 {% endblock %}

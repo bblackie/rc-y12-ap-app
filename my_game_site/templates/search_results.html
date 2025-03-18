@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Search Results - My Awesome Game Site{% endblock %}
+{% block content %}
+<h2>{{ search_type }} Search Results for "{{ search_value }}"</h2>
+{% if results and results|length > 0 %}
+  <div class="results-grid">
+    {% for game in results %}
+      <div class="result-card" style="display: flex; align-items: center; margin-bottom: 10px;">
+        <a href="{{ url_for('game_detail', game_id=game['game_id']) }}">
+          <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover" style="width:150px; margin-right:10px;">
+        </a>
+        <div class="result-info">
+          <a href="{{ url_for('game_detail', game_id=game['game_id']) }}" class="game-link-button">
+            {{ game['title'] }}
+          </a>
+          <p>Developer: {{ game['developer'] }}</p>
+          <p>Publisher: {{ game['publisher'] }}</p>
+          <p>Score: {{ game['metacritic_score'] }}</p>
+          <p>Age Rating: {{ game['age_rating'] }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No results found.</p>
+{% endif %}
+<a href="{{ url_for('search') }}">Back to Search</a>
+{% endblock %}

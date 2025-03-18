@@ -1,15 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("JavaScript loaded!");
-  const fadeElems = document.querySelectorAll(
-    ".btn-fade, .big-search-btn, .home-container, .search-page, .game-detail-container"
-  );
-  fadeElems.forEach((elem) => {
-    elem.style.opacity = 0;
-    setTimeout(() => {
-      elem.style.transition = "opacity 1s";
-      elem.style.opacity = 1;
-    }, 100);
-  });
 
   // Initialize flatpickr for release date inputs
   var releaseDateMinInput = document.getElementById("release-date-min");

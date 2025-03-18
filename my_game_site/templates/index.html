@@ -4,20 +4,26 @@
 <div class="home-container">
   <div class="big-search-bar" style="background-image: url('{{ url_for('static', filename='images/searchbar-bg.jpg') }}');">
     <h2>Find Your Next Game!</h2>
-    <a href="{{ url_for('search') }}" class="btn-fade big-button">Search Games</a>
   </div>
   <!-- Games Grid (4x5 layout) -->
   <div class="games-grid">
     {% for game in all_games %}
-      <div class="game-block">
-        <a href="{{ url_for('game_detail', game_id=game['id']) }}">
-          <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover">
-          <div class="game-block-title">{{ game['title'] }}</div>
+      <div class="game-block" style="display: flex; align-items: center; margin-bottom: 10px;">
+        <a href="{{ url_for('game_detail', game_id=game['game_id']) }}">
+          <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover" style="width:150px; margin-right:10px;">
         </a>
-        <p>Developer: {{ game['developer'] }}</p>
-        <p>Publisher: {{ game['publisher'] }}</p>
-        <p>Score: {{ game['metacritic_score'] }}</p>
-        <p>Age Rating: {{ game['nz_age_rating'] }}</p>
+        <div class="game-info">
+          <!-- Game title is now clickable -->
+          <a href="{{ url_for('game_detail', game_id=game['game_id']) }}"
+             class="game-block-title"
+             style="font-size: 1.2em; font-weight: bold; text-decoration: none; color: #333;">
+            {{ game['title'] }}
+          </a>
+          <p>Developer: {{ game['developer'] }}</p>
+          <p>Publisher: {{ game['publisher'] }}</p>
+          <p>Score: {{ game['metacritic_score'] }}</p>
+          <p>Age Rating: {{ game['age_rating'] }}</p>
+        </div>
       </div>
     {% endfor %}
   </div>

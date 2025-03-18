@@ -1,80 +1,138 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import random
+from datetime import datetime
 
 app = Flask(__name__)
-DATABASE = 'games.db'
+DATABASE = 'Popular_Games.db'  # Your database file
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row  # Enable column access by name
     return conn
 
+# Base query joining all required tables.
+GAME_SELECT = """
+SELECT 
+    games.game_id,
+    games.title,
+    games.genre,
+    games.release_date,
+    games.metacritic_score,
+    games.description,
+    developers.name AS developer,
+    publishers.name AS publisher,
+    age_ratings.rating AS age_rating,
+    age_ratings.reason AS age_rating_reason,
+    images.cover_image,
+    images.image_url,
+    images.image_url2,
+    images.image_url3
+FROM games
+JOIN developers ON games.developer_id = developers.developer_id
+JOIN publishers ON games.publisher_id = publishers.publisher_id
+JOIN age_ratings ON games.age_rating_id = age_ratings.age_rating_id
+JOIN images ON games.game_id = images.game_id
+"""
+
 @app.route('/')
 def home():
     conn = get_db_connection()
-    games = conn.execute("SELECT * FROM games").fetchall()
+    games = conn.execute(GAME_SELECT).fetchall()
     conn.close()
     return render_template("index.html", all_games=games)
 
-@app.route('/search', methods=["GET", "POST"])
+# Main search page that shows the separate search forms.
+@app.route('/search')
 def search():
+    return render_template("search.html")
+
+# Search by Title, Developer, or Publisher.
+@app.route('/search_by_title', methods=["POST"])
+def search_by_title():
+    search_term = request.form.get("search_term", "").strip()
+    query = GAME_SELECT + " WHERE (games.title LIKE ? COLLATE NOCASE OR developers.name LIKE ? COLLATE NOCASE OR publishers.name LIKE ? COLLATE NOCASE)"
+    wildcard = f"%{search_term}%"
+    params = [wildcard, wildcard, wildcard]
     conn = get_db_connection()
-    if request.method == "POST":
-        # Retrieve search inputs
-        search_term = request.form.get("search_term", "").strip()
-        score_min = request.form.get("score-min", "").strip()
-        score_max = request.form.get("score-max", "").strip()
-        date_min = request.form.get("date-min", "").strip()
-        date_max = request.form.get("date-max", "").strip()
-        nz_ratings = request.form.getlist("nz_rating")  # May be empty list
-        
-        # If nothing is entered in any field (except the sliders which default to 0 and 100),
-        # show an error message instead of returning all games.
-        if not search_term and not date_min and not date_max and not nz_ratings:
-            error = "You must enter something in the search boxes to proceed."
-            conn.close()
-            return render_template("search.html", error=error, searched=True, results=[], all_games=[])
+    results = conn.execute(query, tuple(params)).fetchall()
+    conn.close()
+    return render_template("search_results.html",
+                           results=results,
+                           search_type="Title/Developer/Publisher",
+                           search_value=search_term)
 
-        query = "SELECT * FROM games WHERE 1=1"
-        params = []
-        
-        # Wildcard, case‑insensitive search across title, developer, and publisher
-        if search_term:
-            query += " AND (title LIKE ? COLLATE NOCASE OR developer LIKE ? COLLATE NOCASE OR publisher LIKE ? COLLATE NOCASE)"
-            wildcard = f"%{search_term}%"
-            params.extend([wildcard, wildcard, wildcard])
-        if score_min:
-            query += " AND metacritic_score >= ?"
-            params.append(score_min)
-        if score_max:
-            query += " AND metacritic_score <= ?"
-            params.append(score_max)
-        if date_min:
-            query += " AND release_date >= ?"
-            params.append(date_min)
-        if date_max:
-            query += " AND release_date <= ?"
-            params.append(date_max)
-        if nz_ratings:
-            placeholders = ','.join('?' * len(nz_ratings))
-            query += f" AND nz_age_rating IN ({placeholders})"
-            params.extend(nz_ratings)
+# Search by Metacritic Score.
+@app.route('/search_by_score', methods=["POST"])
+def search_by_score():
+    score_min = request.form.get("score_min", "").strip()
+    score_max = request.form.get("score_max", "").strip()
+    # Set defaults if not provided.
+    if not score_min:
+        score_min = 0
+    if not score_max:
+        score_max = 100
+    query = GAME_SELECT + " WHERE games.metacritic_score >= ? AND games.metacritic_score <= ?"
+    params = [int(score_min), int(score_max)]
+    conn = get_db_connection()
+    results = conn.execute(query, tuple(params)).fetchall()
+    conn.close()
+    return render_template("search_results.html",
+                           results=results,
+                           search_type="Metacritic Score",
+                           search_value=f"{score_min} to {score_max}")
 
-        results = conn.execute(query, tuple(params)).fetchall()
-        # When searching, we don't display the default All Games list.
-        conn.close()
-        return render_template("search.html", searched=True, results=results, all_games=[])
-    else:
-        # When GET, show the default All Games list (4x5 grid)
-        all_games = conn.execute("SELECT * FROM games").fetchall()
-        conn.close()
-        return render_template("search.html", searched=False, all_games=all_games, results=[])
+# Search by Release Date with validation.
+@app.route('/search_by_date', methods=["POST"])
+def search_by_date():
+    date_min = request.form.get("date_min", "").strip()
+    date_max = request.form.get("date_max", "").strip()
+    try:
+        date_min_obj = datetime.strptime(date_min, "%Y-%m-%d")
+        date_max_obj = datetime.strptime(date_max, "%Y-%m-%d")
+    except ValueError:
+        error = "Invalid date format. Please use YYYY-MM-DD and select dates between 2000-01-01 and 2025-01-01."
+        return render_template("search.html", error=error)
+    
+    allowed_min = datetime(2000, 1, 1)
+    allowed_max = datetime(2025, 1, 1)
+    if date_min_obj < allowed_min or date_max_obj > allowed_max:
+        error = "Release dates must be between 2000-01-01 and 2025-01-01."
+        return render_template("search.html", error=error)
+    
+    query = GAME_SELECT + " WHERE games.release_date >= ? AND games.release_date <= ?"
+    params = [date_min, date_max]
+    conn = get_db_connection()
+    results = conn.execute(query, tuple(params)).fetchall()
+    conn.close()
+    return render_template("search_results.html",
+                           results=results,
+                           search_type="Release Date",
+                           search_value=f"{date_min} to {date_max}")
+
+# Search by Age Rating with validation.
+@app.route('/search_by_age', methods=["POST"])
+def search_by_age():
+    age_rating = request.form.get("age_rating", "").strip()
+    allowed_age_ratings = ["G", "PG", "M", "R13", "R16", "R18"]
+    if age_rating not in allowed_age_ratings:
+        error = "Invalid age rating. Valid options are: " + ", ".join(allowed_age_ratings) + "."
+        return render_template("search.html", error=error)
+    
+    query = GAME_SELECT + " WHERE age_ratings.rating = ?"
+    params = [age_rating]
+    conn = get_db_connection()
+    results = conn.execute(query, tuple(params)).fetchall()
+    conn.close()
+    return render_template("search_results.html",
+                           results=results,
+                           search_type="Age Rating",
+                           search_value=age_rating)
 
 @app.route("/game/<int:game_id>")
 def game_detail(game_id):
     conn = get_db_connection()
-    game = conn.execute("SELECT * FROM games WHERE id = ?", (game_id,)).fetchone()
+    game = conn.execute(GAME_SELECT + " WHERE games.game_id = ?", (game_id,)).fetchone()
     conn.close()
     if game is None:
         return "Game not found", 404
@@ -83,11 +141,11 @@ def game_detail(game_id):
 @app.route("/random")
 def random_game():
     conn = get_db_connection()
-    games = conn.execute("SELECT id FROM games").fetchall()
+    games = conn.execute("SELECT game_id FROM games").fetchall()
     conn.close()
     if not games:
         return "No games in database", 404
-    random_id = random.choice(games)["id"]
+    random_id = random.choice(games)["game_id"]
     return redirect(url_for("game_detail", game_id=random_id))
 
 if __name__ == '__main__':
