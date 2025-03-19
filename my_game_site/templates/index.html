@@ -1,31 +1,35 @@
 {% extends "base.html" %}
 {% block title %}Home - My Awesome Game Site{% endblock %}
 {% block content %}
-<div class="home-container">
-  <div class="big-search-bar" style="background-image: url('{{ url_for('static', filename='images/searchbar-bg.jpg') }}');">
-    <h2>Find Your Next Game!</h2>
-  </div>
-  <!-- Games Grid (4x5 layout) -->
-  <div class="games-grid">
-    {% for game in all_games %}
-      <div class="game-block" style="display: flex; align-items: center; margin-bottom: 10px;">
-        <a href="{{ url_for('game_detail', game_id=game['game_id']) }}">
-          <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover" style="width:150px; margin-right:10px;">
+<h2>All Games</h2>
+<div class="games-grid">
+  {% for game in all_games %}
+    <div class="game-block" style="border:1px solid #ccc; margin-bottom:10px; padding:10px;">
+      <a href="{{ url_for('game_detail', game_id=game['game_id']) }}">
+        <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover" style="width:150px; float:left; margin-right:10px;">
+      </a>
+      <div>
+        <a href="{{ url_for('game_detail', game_id=game['game_id']) }}" style="font-weight:bold; font-size:1.2em;">
+          {{ game['title'] }}
         </a>
-        <div class="game-info">
-          <!-- Game title is now clickable -->
-          <a href="{{ url_for('game_detail', game_id=game['game_id']) }}"
-             class="game-block-title"
-             style="font-size: 1.2em; font-weight: bold; text-decoration: none; color: #333;">
-            {{ game['title'] }}
-          </a>
-          <p>Developer: {{ game['developer'] }}</p>
-          <p>Publisher: {{ game['publisher'] }}</p>
-          <p>Score: {{ game['metacritic_score'] }}</p>
-          <p>Age Rating: {{ game['age_rating'] }}</p>
-        </div>
+        <p>Developer: {{ game['developer'] }}</p>
+        <p>Publisher: {{ game['publisher'] }}</p>
+        <p>Score: {{ game['metacritic_score'] }}</p>
+        <p>Age Rating: {{ game['age_rating'] }}</p>
+        <p>
+          <strong>Platforms:</strong>
+          {% if game['platform_name1'] %}{{ game['platform_name1'] }}{% endif %}
+          {% if game['platform_name2'] %} / {{ game['platform_name2'] }}{% endif %}
+          {% if game['platform_name3'] %} / {{ game['platform_name3'] }}{% endif %}
+          {% if game['platform_name4'] %} / {{ game['platform_name4'] }}{% endif %}
+          {% if game['platform_name5'] %} / {{ game['platform_name5'] }}{% endif %}
+          {% if game['platform_name6'] %} / {{ game['platform_name6'] }}{% endif %}
+          {% if game['platform_name7'] %} / {{ game['platform_name7'] }}{% endif %}
+          {% if game['platform_name8'] %} / {{ game['platform_name8'] }}{% endif %}
+        </p>
       </div>
-    {% endfor %}
-  </div>
+      <div style="clear:both;"></div>
+    </div>
+  {% endfor %}
 </div>
 {% endblock %}

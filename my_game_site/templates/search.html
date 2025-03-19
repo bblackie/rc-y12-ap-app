@@ -1,74 +1,67 @@
 {% extends "base.html" %}
 {% block title %}Search Games - My Awesome Game Site{% endblock %}
 {% block content %}
-<h2>Search Games</h2>
+<h2>Search / Filter Games</h2>
 {% if error %}
-  <p style="color: red;">{{ error }}</p>
+  <p style="color:red; font-weight:bold;">{{ error }}</p>
 {% endif %}
 
-<div style="margin-bottom: 20px;">
-  <h3>Search by Title / Developer / Publisher</h3>
-  <p style="font-size: 0.9em; color: #555;">Note: You can only search among the 20 publishers and developers listed below.</p>
-  <form method="POST" action="{{ url_for('search_by_title') }}">
-    <input type="text" name="search_term" placeholder="Enter title, developer, or publisher">
-    <button type="submit">Search</button>
-  </form>
-</div>
+<!-- Form for Search (Title/Developer/Publisher) -->
+<form method="POST" action="{{ url_for('search') }}">
+  <h3>Search</h3>
+  <input type="hidden" name="filter" value="text">
+  <input type="text" name="search_term" placeholder="e.g., Zelda, Epic Studios" style="width:300px;">
+  <button type="submit" style="padding:5px 15px;">Search</button>
+</form>
 
-<div style="margin-bottom: 20px;">
+<hr>
+
+<!-- Form for Metacritic Score search -->
+<form method="POST" action="{{ url_for('search') }}">
   <h3>Search by Metacritic Score</h3>
-  <form method="POST" action="{{ url_for('search_by_score') }}">
-    <label>Min Score:
-      <input type="number" name="score_min" value="0" min="0" max="100">
-    </label>
-    <label>Max Score:
-      <input type="number" name="score_max" value="100" min="0" max="100">
-    </label>
-    <button type="submit">Search</button>
-  </form>
-</div>
+  <input type="hidden" name="filter" value="score">
+  <label>Min:</label>
+  <input type="number" name="score_min" value="{{ min_score }}" min="{{ min_score }}" max="100" style="width:80px;">
+  <label>Max:</label>
+  <input type="number" name="score_max" value="100" min="{{ min_score }}" max="100" style="width:80px;">
+  <button type="submit" style="padding:5px 15px;">Search Score</button>
+</form>
 
-<div style="margin-bottom: 20px;">
+<hr>
+
+<!-- Form for Release Date search -->
+<form method="POST" action="{{ url_for('search') }}">
   <h3>Search by Release Date</h3>
-  <form method="POST" action="{{ url_for('search_by_date') }}">
-    <label>From:
-      <input type="text" name="date_min" placeholder="YYYY-MM-DD">
-    </label>
-    <label>To:
-      <input type="text" name="date_max" placeholder="YYYY-MM-DD">
-    </label>
-    <p style="font-size: 0.9em; color: #555;">Please select dates between 2000-01-01 and 2025-01-01.</p>
-    <button type="submit">Search</button>
-  </form>
-</div>
+  <input type="hidden" name="filter" value="date">
+  <label>From (YYYY-MM-DD):</label>
+  <input type="text" name="date_min" placeholder="e.g., 2005-01-01" style="width:120px;">
+  <label>To (YYYY-MM-DD):</label>
+  <input type="text" name="date_max" placeholder="e.g., 2020-12-31" style="width:120px;">
+  <button type="submit" style="padding:5px 15px;">Search Date</button>
+</form>
 
-<div style="margin-bottom: 20px;">
+<hr>
+
+<!-- Form for Age Rating search -->
+<form method="POST" action="{{ url_for('search') }}">
   <h3>Search by Age Rating</h3>
-  <form method="POST" action="{{ url_for('search_by_age') }}">
-    <input type="text" name="age_rating" placeholder="Enter Age Rating (e.g., G, PG, M, R13, R16, R18)">
-    <p style="font-size: 0.9em; color: #555;">Valid age ratings: G, PG, M, R13, R16, R18.</p>
-    <button type="submit">Search</button>
-  </form>
-</div>
+  <input type="hidden" name="filter" value="age_rating">
+  <input type="text" name="age_rating" placeholder="e.g., PG" style="width:100px;">
+  <button type="submit" style="padding:5px 15px;">Search Age Rating</button>
+</form>
 
-<!-- List of available Publishers and Developers -->
-<div style="margin-top: 40px;">
-  <h3>Available Publishers (top 20)</h3>
-  <p style="font-size: 0.9em; color: #555;">Note: You can only select from these 20 publishers.</p>
-  <ul>
-    {% for publisher in publishers %}
-      <li>{{ publisher['name'] }}</li>
-    {% endfor %}
-  </ul>
-</div>
+<hr>
 
-<div style="margin-top: 20px;">
-  <h3>Available Developers (top 20)</h3>
-  <p style="font-size: 0.9em; color: #555;">Note: You can only select from these 20 developers.</p>
-  <ul>
-    {% for developer in developers %}
-      <li>{{ developer['name'] }}</li>
-    {% endfor %}
-  </ul>
-</div>
+<!-- Form for Platform search -->
+<form method="POST" action="{{ url_for('search') }}">
+  <h3>Search by Platform</h3>
+  <input type="hidden" name="filter" value="platform">
+  {% for plat in platforms %}
+      <label style="margin-right:15px;">
+        <input type="checkbox" name="platforms" value="{{ plat['platform_id'] }}">
+        {{ plat['platform_name'] }}
+      </label>
+  {% endfor %}
+  <button type="submit" style="padding:5px 15px;">Search Platform</button>
+</form>
 {% endblock %}

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("JavaScript loaded!");
 
-  // Initialize flatpickr for release date inputs
+  // Initialize flatpickr for release date inputs if needed
   var releaseDateMinInput = document.getElementById("release-date-min");
   if (releaseDateMinInput) {
     flatpickr(releaseDateMinInput, {
