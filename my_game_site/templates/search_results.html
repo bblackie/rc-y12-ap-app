@@ -5,12 +5,14 @@
 {% if results and results|length > 0 %}
   <div>
     {% for game in results %}
-      <div style="border:1px solid #ccc; margin-bottom:10px; padding:10px;">
-        <a href="{{ url_for('game_detail', game_id=game['game_id']) }}">
-          <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover" style="width:150px; float:left; margin-right:10px;">
-        </a>
-        <div>
-          <a href="{{ url_for('game_detail', game_id=game['game_id']) }}" style="font-weight:bold; font-size:1.2em;">
+      <div style="border:1px solid #ccc; margin-bottom:10px; padding:10px; display: flex; align-items: center;">
+        <div class="game-image" style="margin-right: 20px;">
+          <a href="{{ url_for('game_detail', game_id=game['game_id']) }}">
+            <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover" style="width:150px;">
+          </a>
+        </div>
+        <div class="game-info" style="flex: 1;">
+          <a href="{{ url_for('game_detail', game_id=game['game_id']) }}" style="font-weight:bold; font-size:1.2em; display:block;">
             {{ game['title'] }}
           </a>
           <p>Developer: {{ game['developer'] }}</p>
@@ -30,7 +32,6 @@
           </p>
           <p><strong>Price:</strong> {{ game['price'] }} {{ game['currency'] }}</p>
         </div>
-        <div style="clear:both;"></div>
       </div>
     {% endfor %}
   </div>
