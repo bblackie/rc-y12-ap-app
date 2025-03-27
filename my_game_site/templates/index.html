@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Home - My Awesome Game Site{% endblock %}
+{% block title %}Home - The Twenty Best Games of All Time{% endblock %}
 {% block content %}
 <h2>All Games</h2>
-<div class="games-grid">
+<div class="games-list">
   {% for game in all_games %}
-    <div class="game-block" style="border:1px solid #ccc; margin-bottom:10px; padding:10px;">
+    <div class="game-box" style="border:1px solid #ccc; margin-bottom:10px; padding:10px;">
       <a href="{{ url_for('game_detail', game_id=game['game_id']) }}">
         <img src="{{ game['cover_image'] }}" alt="{{ game['title'] }} Cover" style="width:150px; float:left; margin-right:10px;">
       </a>
@@ -27,6 +27,7 @@
           {% if game['platform_name7'] %} / {{ game['platform_name7'] }}{% endif %}
           {% if game['platform_name8'] %} / {{ game['platform_name8'] }}{% endif %}
         </p>
+        <p><strong>Price:</strong> {{ game['price'] }} {{ game['currency'] }}</p>
       </div>
       <div style="clear:both;"></div>
     </div>
