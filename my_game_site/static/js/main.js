@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("JavaScript loaded!");
 
+  // Removed slider functionality since it is no longer needed.
+
   // Initialize flatpickr for release date inputs if needed
-  var releaseDateMinInput = document.getElementById("release-date-min");
+  const releaseDateMinInput = document.getElementById("release-date-min");
   if (releaseDateMinInput) {
     flatpickr(releaseDateMinInput, {
       dateFormat: "Y-m-d",
@@ -10,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
       maxDate: "2024-12-31",
     });
   }
-  var releaseDateMaxInput = document.getElementById("release-date-max");
+
+  const releaseDateMaxInput = document.getElementById("release-date-max");
   if (releaseDateMaxInput) {
     flatpickr(releaseDateMaxInput, {
       dateFormat: "Y-m-d",
